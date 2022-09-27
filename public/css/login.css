@@ -34,7 +34,7 @@
     justify-content: center;
     margin-top: 10%;
 }
-#login .lg-btn-wrapper a{
+#login .lg-btn-wrapper button{
     width: 100%;
     padding: 15px 20px;
     text-decoration: none;
@@ -42,9 +42,12 @@
     text-align: center;
     color: #fff;
     font-family: 'Cabin Condensed', sans-serif;
+    font-size: 16px;
     letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
 }
-#login .lg-btn-wrapper a:hover{
+#login .lg-btn-wrapper button:hover{
     background-color: #E6D18E;
     color: black;
 }

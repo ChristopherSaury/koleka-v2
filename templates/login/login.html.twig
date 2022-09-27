@@ -23,6 +23,9 @@
 <section id="login">
     <form method="post" action="{{path('app_login')}}">
         <h1>Se connecter à Koleka</h1>
+        {% if error %}
+        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
         <div class="identification">
             <label for="email"></label>
             <input type="email" value="{{ last_username }}" id="email" name="email" placeholder="Entrez votre Email">
@@ -36,7 +39,7 @@
             <p> Se souvenir de moi </p>
         </div>
         <div class="lg-btn-wrapper">
-            <a href="#">Connexion</a>
+            <button type="submit">Connexion</button>
         </div>
         <p class="signup-link">
             Vous n'avez pas de compte ? <a href="{{path('inscription')}}">créez-en un</a> 
