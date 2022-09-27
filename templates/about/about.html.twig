@@ -1,0 +1,203 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - A propos{% endblock %}
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('css/about.css')}}">{% endblock %}
+
+{% block style %}
+    <style>
+        .abt-banner{
+            width: 100%;
+            height: 500px;
+            background: url('{{asset("img/museum.jpg")}}')
+            center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #about .member1{
+            background: url('{{asset("img/member-1.jpg")}}')
+            center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: relative;
+            
+        }
+        #about .member2{
+            background: url('{{asset("img/member-3.jpg")}}')
+            center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        #about .member3{
+            background: url('{{asset("img/member-2.jpg")}}')
+            center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        #about .member4{
+            background: url('{{asset("img/member-4.jpg")}}')
+            center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        #about .member5{
+            background: url('{{asset("img/member-5.jpg")}}')
+            center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        #about .member6{
+            background: url('{{asset("img/member-6.jpg")}}')
+            center center;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="abt-banner">
+    <div class="abt-title-wrapper">
+        <h2>Qui sommes nous ?</h2>
+    </div>
+</div>
+<section id="about">
+    <div class="koleka-intro">
+        <div class="abt-presentation">
+            <h1 class="abt-title1">La naissance de Koleka</h1>
+            <p>
+                Koleka est une association créer par un groupe d'étudiants
+                dans le milieu de la communication. Dans le cadre de recherche
+                pour un travail d’anthropologie humaine. Au vu des difficultés
+                rencontré pour se procurer de la documentation sur diverses cultures,
+                ces derniers eurent l'idée de créer une plate-forme permettant à chacun
+                de partager ses histoires traditionnelles. C'est dans des valeurs de partages
+                et de sauvegarde de cultures face à la modernité, que s'inscrit la plate-forme Koleka.
+            </p>
+        </div>
+        <div class="abt-value">
+            <h2 class="abt-value-title">Nos Valeurs</h2>
+            <p>
+                Dans un monde globalisé où les cultures tendent à être uniformisée, Koleka se bat pour
+                défendre les traditions à travers les différents récits qui constituent les croyances et
+                la vision du monde ancestrale. La plate-forme sert à cet usage, qu'elle soit utilisée par
+                divers créateurs et auteurs cherchant à s'inspirer ou qu'il s'agisse de parents souhaitant
+                lire des contes traditionnels à leurs enfants chaque soir. L'objectif est de faire en sorte
+                que la culture transcende le temps. 
+            </p>
+        </div>
+    </div>
+    <div class="team-section">
+        <h2 class="abt-team-title">Notre Équipe</h2>
+        <div class="abt-card-container">
+            <div class="member member1">
+                <div class="member-sn">
+                    <a href="https://fr-fr.facebook.com/">Fb.</a>
+                    <a href="https://twitter.com/?lang=fr">Tw.</a>
+                    <a href="https://fr.linkedin.com/">Ln.</a>
+                </div>
+                <div class="member-info" id="member1">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Quasi quos doloremque, accusantium ipsum doloribus numquam
+                    </p>
+                </div>
+                <div class="member-position">
+                    <p class="mb-name">Christian Mark</p>
+                    <p class="mb-position">Co-Fondateur</p>
+                </div>
+            </div>
+            <div class="member member2">
+                <div class="member-sn">
+                    <a href="https://fr-fr.facebook.com/">Fb.</a>
+                    <a href="https://twitter.com/?lang=fr">Tw.</a>
+                    <a href="https://fr.linkedin.com/">Ln.</a>
+                </div>
+                <div class="member-info" id="member2">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Quasi quos doloremque, accusantium ipsum doloribus numquam
+                    </p>
+                </div>
+                <div class="member-position">
+                    <p class="mb-name">Christelle Marechal</p>
+                    <p class="mb-position">Co-Fondatrice</p>
+                </div>
+            </div>
+            <div class="member member3">
+                <div class="member-sn">
+                    <a href="https://fr-fr.facebook.com/">Fb.</a>
+                    <a href="https://twitter.com/?lang=fr">Tw.</a>
+                    <a href="https://fr.linkedin.com/">Ln.</a>
+                </div>
+                <div class="member-info" id="member3">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Quasi quos doloremque, accusantium ipsum doloribus numquam
+                    </p>
+                </div>
+                <div class="member-position">
+                    <p class="mb-name">Grégoire Pons</p>
+                    <p class="mb-position">Co-Fondateur</p>
+                </div>
+            </div>
+            <div class="member member4">
+                <div class="member-sn">
+                    <a href="https://fr-fr.facebook.com/">Fb.</a>
+                    <a href="https://twitter.com/?lang=fr">Tw.</a>
+                    <a href="https://fr.linkedin.com/">Ln.</a>
+                </div>
+                <div class="member-info" id="member4">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Quasi quos doloremque, accusantium ipsum doloribus numquam
+                    </p>
+                </div>
+                <div class="member-position">
+                    <p class="mb-name">Corinne Phong Hân</p>
+                    <p class="mb-position">Chargée de Communication</p>
+                </div>
+            </div>
+            <div class="member member5">
+                <div class="member-sn">
+                    <a href="https://fr-fr.facebook.com/">Fb.</a>
+                    <a href="https://twitter.com/?lang=fr">Tw.</a>
+                    <a href="https://fr.linkedin.com/">Ln.</a>
+                </div>
+                <div class="member-info" id="member5">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Quasi quos doloremque, accusantium ipsum doloribus numquam
+                    </p>
+                </div>
+                <div class="member-position">
+                    <p class="mb-name">Alexia León</p>
+                    <p class="mb-position">Trésorière</p>
+                </div>
+            </div>
+            <div class="member member6">
+                <div class="member-sn">
+                    <a href="https://fr-fr.facebook.com/">Fb.</a>
+                    <a href="https://twitter.com/?lang=fr">Tw.</a>
+                    <a href="https://fr.linkedin.com/">Ln.</a>
+                </div>
+                <div class="member-info" id="member6">
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Quasi quos doloremque, accusantium ipsum doloribus numquam
+                    </p>
+                </div>
+                <div class="member-position">
+                    <p class="mb-name">Bastien Kordić</p>
+                    <p class="mb-position">Développeur</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<hr>
+
+    {% include  './form/newsletter.html.twig' %}
+{% endblock %}

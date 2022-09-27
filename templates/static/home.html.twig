@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}Association culturelle Koleka - Accueil{% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/home.css')}}"> {% endblock %}
+{% block style %}
+    <style>
+        .medusa{
+            color: #fff;
+            width: 100%;
+            height: 140vh;
+            background: url("{{asset('img/medusa.jpg')}}");
+            background-size: 100% 100%;
+            border-bottom: 1px solid rgba(239, 239, 239, 0.71);
+            display: flex;
+            justify-content: flex-end;
+        }
+        .werewolf{
+            color: #fff;
+            width: 100%;
+            height: 140vh;
+            background: url("{{asset('img/loup-garoup.jpg')}}");
+            background-size: 100% 100%;
+            border-bottom: 1px solid rgba(239, 239, 239, 0.71);
+        }
+        .shadow-people{
+            color: #fff;
+            width: 100%;
+            height: 140vh;
+            background: url("{{asset('img/shadow-people.jpg')}}");
+            background-size: 100% 100%;
+            border-bottom: 1px solid rgba(239, 239, 239, 0.71);
+            display: flex;
+            justify-content: flex-end;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<div id="progress">
+    <span id="progress-value"><i class="fa-solid fa-chevron-up"></i></span>
+</div>
+
+<section id="introduction">
+<div class="medusa">
+    <div class="medusa-intro">
+        <h2>Médusa l'impytoyable gorgone</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Illo accusantium adipisci omnis! Dolores tempora,
+            ea fuga asperiores voluptates amet quidem commodi pariatur laboriosam
+            recusandae praesentium ipsa maxime deleniti incidunt iusto.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta velit possimus,
+            fuga illum dolorem blanditiis. Quisquam recusandae, laboriosam facere quibusdam rem esse corrupti obcaecati, delectus doloremque ad possimus aliquam labore!
+        </p>
+        <a href="./legendes-liste/medusa.html" class="btn-discovery">
+            Découvrir
+        </a>
+    </div>
+</div>
+<div class="werewolf">
+    <div class="werewolf-intro reveal">
+        <h2>Les légendes de lycanthrope</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Illo accusantium adipisci omnis! Dolores tempora,
+            ea fuga asperiores voluptates amet quidem commodi pariatur laboriosam
+            recusandae praesentium ipsa maxime deleniti incidunt iusto.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta velit possimus,
+            fuga illum dolorem blanditiis. Quisquam recusandae, laboriosam facere quibusdam rem esse corrupti obcaecati, delectus doloremque ad possimus aliquam labore!
+        </p>
+        <a href="./legendes-liste/lycanthrope.html" class="btn-discovery">
+            Découvrir
+        </a>
+    </div>
+</div>
+<div class="shadow-people">
+    <div class="shadow-people-intro reveal">
+        <h2>Les shadow peoples ou personnes ombres</h2>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit.
+            Illo accusantium adipisci omnis! Dolores tempora,
+            ea fuga asperiores voluptates amet quidem commodi pariatur laboriosam
+            recusandae praesentium ipsa maxime deleniti incidunt iusto.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta velit possimus,
+            fuga illum dolorem blanditiis. Quisquam recusandae, laboriosam facere quibusdam rem esse corrupti obcaecati, delectus doloremque ad possimus aliquam labore!
+        </p>
+        <a href="./legendes-liste/shadow-people.html" class="btn-discovery">
+            Découvrir
+        </a>
+    </div>
+</div>
+</section>
+{% endblock %}
+{% block js %} <script src="{{asset('js/home.js')}}"></script> {% endblock %}

@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Légendes{% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/legend.css')}}"> {% endblock %}
+
+{% block style %}
+    <style>
+        #legend .dropdown-bkg{
+            width: 100%;
+            height: 60vh;
+            background: url('{{asset("img/fantasy-castle.jpg")}}')
+            center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section id="legend">
+    <div class="dropdown-bkg">
+        <div class="country-menu">
+            <div class="country-entry">
+                <span class="lg-selector" onclick="closeCountryMenu(this)">
+                    <p>-- Sélectionner un Pays --</p> <img id="lg-arrow" style="width: 20px ; height: 20px" src="{{asset('img/arrow.svg')}}" alt="arrow">
+                </span>     
+                <ul id="choice-menu" class="close-lg-menu">
+                    <li class="lg-continent-name"> Afrique</li>
+                    <a href="./pays/congoRdc.html"><li class="country-link">Congo</li></a>
+                    <a href="./pays/togo.html"><li class="country-link">Togo</li></a>
+                    <li class="lg-continent-name">Amerique</li>
+                    <a href="./pays/usa.html"><li class="country-link">Etats-Unis</li></a>
+                    <a href="./pays/haiti.html"><li class="country-link">Haïti</li></a>
+                    <a href="./pays/mexique.html"><li class="country-link">Mexique</li></a>
+                    <li class="lg-continent-name">Europe</li>
+                    <a href="./pays/france.html"><li class="country-link">France</li></a>
+                    <a href="./pays/grece.html"><li class="country-link">Grèce</li></a>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="monthly-selection">
+        <h2 class="legend-title">Nos sélections du mois</h2>
+            <div class="container-section">
+                <div class="legend-container">
+                    <a class="lg-myth-link" href="./legendes-liste/medusa.html">
+                        <img class="legend-illustration" src="{{asset('img/medusa.jpg')}}" alt="mythe légende médusa grèce antique">
+                    </a>
+                    <a class="lg-myth-cath" href="./legendes-liste/medusa.html">
+                        <p class="myth-cath">MYTHE, LEGENDE GRECE ANTIQUE</p>
+                    </a>
+                    <a class="lg-myth-title" href="./legendes-liste/medusa.html">
+                        <h2 class="myth-title">La légende de Médusa</h2>
+                    </a>
+                    <a href="./legendes-liste/medusa.html" class="lg-myth-resume">
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error reprehenderit voluptas, dolore recusandae vero mollitia alias quae animi doloribus facilis ipsa tempore ab sit necessitatibus ullam soluta nobis rem magni.
+                        </p>
+                    </a>
+                </div>
+                <div class="legend-container">
+                    <a class="lg-myth-link" href="./legendes-liste/bete-du-guevaudan.html">
+                        <img class="legend-illustration" src="{{asset('img/bête-du-guevaudan.jpg')}}" alt="mythe légende de la bête du guévaudan">
+                    </a>
+                    <a class="lg-myth-cath" href="./legendes-liste/bete-du-guevaudan.html">
+                        <p class="myth-cath">CULTURE, LEGENDES HISTOIRE FRANCE</p>
+                    </a>
+                    <a class="lg-myth-title" href="./legendes-liste/bete-du-guevaudan.html">
+                        <h2 class="myth-title">La bête du Guévaudan</h2>
+                    </a>
+                    <a class="lg-myth-resume" href="./legendes-liste/bete-du-guevaudan.html">
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error reprehenderit voluptas, dolore recusandae vero mollitia alias quae animi doloribus facilis ipsa tempore ab sit necessitatibus ullam soluta nobis rem magni.
+                        </p>
+                    </a>
+                </div>
+                <div class="legend-container">
+                    <a href="./legendes-liste/clairvius-narcisse.html" class="lg-myth-link">
+                        <img class="legend-illustration" src="{{asset('img/sculpture-vaudou.jpg')}}" alt="mythe légende médusa grèce antique">
+                    </a>
+                    <a class="lg-myth-cath" href="./legendes-liste/clairvius-narcisse.html">
+                        <p class="myth-cath">CULTURE, LEGENDES HISTOIRE HAITI</p>
+                    </a>
+                    <a class="lg-myth-title" href="./legendes-liste/clairvius-narcisse.html">
+                        <h2 class="myth-title">Clairvius Narcisse, le zombie</h2>
+                    </a>
+                    <a href="./legendes-liste/clairvius-narcisse.html" class="lg-myth-resume">
+                        <p>
+                            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Error reprehenderit voluptas, dolore recusandae vero mollitia alias quae animi doloribus facilis ipsa tempore ab sit necessitatibus ullam soluta nobis rem magni.
+                        </p>
+                    </a>
+                </div>
+            </div>
+    </div>
+</section>
+<hr>
+{% include './form/newsletter.html.twig' %}
+{% endblock %}
+{% block js %} <script src="{{asset('js/legend.js')}}"></script> {% endblock %}

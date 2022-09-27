@@ -1,0 +1,54 @@
+/*************** LOGIN PAGE ************************/
+#login form{
+    margin-top: 5%;
+    margin-right: 15%;
+    padding: 90px 50px;
+    background-color: #fff;
+    width: 400px;
+    height: auto;
+}
+#login form #email,
+#login form #id-psw{
+    width: 100%;
+    padding: 15px 20px;
+    font-family: 'Cabin Condensed', sans-serif;
+    margin-bottom: 10%;
+    border-radius: 1px;
+    border: 1px solid gainsboro;
+}
+#login form h1{
+    text-align: center;
+    margin-bottom: 8%;
+    font-family: 'Libre Caslon Display', serif;
+    font-size: 30px;
+}
+#login .rmb-me{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Cabin Condensed', sans-serif;
+}
+#login .lg-btn-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+#login .lg-btn-wrapper a{
+    width: 100%;
+    padding: 15px 20px;
+    text-decoration: none;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    font-family: 'Cabin Condensed', sans-serif;
+    letter-spacing: 2px;
+}
+#login .lg-btn-wrapper a:hover{
+    background-color: #E6D18E;
+    color: black;
+}
+#login .signup-link{
+    display: block;
+    padding: 5% 0 5% 0;
+}

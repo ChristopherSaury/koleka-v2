@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+#legend{
+    padding: 80px 0;
+}
+#legend .country-menu{
+    background-color: rgba(34,34,34, 0.6);
+    width: 80%;
+    height: 40%;
+    padding: 0 5%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+}
+#legend .country-entry{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+}
+#legend .country-entry .lg-selector{
+    width: 100%;
+    background-color: #fff;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+}
+#legend .country-entry #lg-arrow{
+    transform: rotate(0deg);
+}
+
+#legend .country-entry #choice-menu{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    list-style-type: none;
+    background-color: #fff;
+    top: 70%;
+    box-shadow: 1px 5px 5px #222;
+    padding: 1%;
+}
+.close-lg-menu{
+    display: none;
+}
+#legend .country-entry #choice-menu a{
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    background-color: #fff;
+    color: black;
+}
+#legend .country-entry #choice-menu .country-link:hover{
+    background-color: rgb(84, 157, 246);
+}
+#legend .country-entry #choice-menu .country-link{
+    padding-left: 4%;
+}
+#legend .country-entry #choice-menu .lg-continent-name{
+    font-weight: bold;
+    padding-left: 2%;
+}
+
+/********** MONTHLY SELECTION  ******************/
+#legend .monthly-selection{
+    padding: 6% 0;
+}
+#legend .monthly-selection .legend-title{
+    margin-bottom: 6%;
+    padding-left: 2%;
+    font-family: 'Mulish', sans-serif;
+    font-size: 50px;
+}
+#legend .monthly-selection .container-section{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#legend .monthly-selection .legend-container{
+    height: auto;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+}
+#legend .monthly-selection .legend-illustration{
+    width: 380px;
+    height: 380px;
+}
+#legend .lg-myth-cath{
+    text-decoration: none;
+    color: #a4713fbe;
+    font-family: 'Teko', sans-serif;
+    font-size: 15px;
+}
+#legend .lg-myth-title{
+    text-decoration: none;
+    color: #222;
+    font-family: 'Cinzel', serif;
+    font-size: 15px;
+    text-align: center;
+    width: 350px;
+}
+#legend .lg-myth-resume{
+    width: 300px;
+    height: auto;
+    text-decoration: none;
+    color: #222;
+    text-align: center;
+    font-size: 18px;
+}
+
+@media screen and (min-width: 280px ) and (max-width: 575px) {
+    #legend .monthly-selection .legend-title{
+        font-size: 25px;
+    }
+    #legend .monthly-selection .legend-illustration{
+        width: 100%;
+        height: auto;
+    }
+    #legend .lg-myth-resume{
+        width: 280px;
+        padding: 2%;
+    }
+    #legend .lg-myth-title{
+        text-decoration: none;
+        color: #222;
+        font-family: 'Cinzel', serif;
+        font-size: 15px;
+        text-align: center;
+        width: 100%;
+    }
+}
+@media screen and (min-width: 576px) and (max-width: 992) {
+    #legend .monthly-selection .legend-title{
+        font-size: 35px;
+    }
+}

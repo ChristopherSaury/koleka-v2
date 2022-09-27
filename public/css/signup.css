@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+/***************** SIGNUP PAGE ***************************/
+#signup form{
+    margin-top: 4%;
+    margin-right: 8%;
+    padding: 50px 50px;
+    background-color: #fff;
+    width: 600px;
+    height: auto;
+}
+#signup form .first-row{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#signup form .first-row div{
+    width: 100%;
+    height: auto;
+}
+
+#signup form #lastname,
+#signup form #firstname,
+#signup form #user_email,
+#signup form #password,
+#signup form #cf-psw{
+    width: 100%;
+    padding: 15px 20px;
+    font-family: 'Cabin Condensed', sans-serif;
+    margin-bottom: 4%;
+    border-radius: 1px;
+    border: 1px solid gainsboro;
+}
+#signup form h2{
+    text-align: center;
+    margin-bottom: 8%;
+    font-family: 'Libre Caslon Display', serif;
+    font-size: 30px;
+}
+#signup .rmb-me{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 4px;
+    font-family: 'Cabin Condensed', sans-serif;
+}
+#signup .sp-btn-wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 10%;
+}
+#signup .sp-btn-wrapper button{
+    width: 100%;
+    padding: 15px 20px;
+    text-decoration: none;
+    background-color: #222;
+    text-align: center;
+    color: #fff;
+    font-family: 'Cabin Condensed', sans-serif;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+
+}
+#signup .sp-btn-wrapper button:hover{
+    background-color: #E6D18E;
+    color: black;
+}
+#signup .signup-link{
+    display: block;
+    padding: 5% 0 5% 0;
+}
+

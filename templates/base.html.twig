@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="author" content="Christopher Saury">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="{{asset('img/favicon-32x32.png')}}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{asset('css/nav-footer.css')}}">
+        {# Run `composer require symfony/webpack-encore-bundle` to start using Symfony UX #}
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+        {% block style %}{% endblock %}
+    </head>
+    <body>
+        <header>
+            <nav id="desktop">
+                <div class="base-nav">
+                    <div class="logo-container">
+                        <a href="{{path('accueil')}}">
+                            <img class="logo" src="{{asset('img/logo.png')}}" alt="Association culturelle Koleka logo">
+                        </a>
+                    </div>
+                    <div class="link-container">
+                        <ul>
+                            <li><a href="{{path('accueil')}}">Accueil</a></li>
+                            <li><a href="{{path('legende')}}">Legendes</a></li>
+                            <li><a href="{{path('a-propos')}}">A Propos</a></li>
+                            <li><a href="{{path('inscription')}}">Inscription</a></li>
+                            <li><a href="{{path('contact')}}">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                {% if app.session.get('username') %}
+                <div class="user-nav">
+                    <div>
+                        <p>Bienvenue,  {{ app.session.get('username') }}</p>
+                    </div>
+                    <div class="user-menu">
+                        <span><p>Menu</p> <img id="lg-arrow" style="width: 20px ; height: 20px" src="{{asset('img/arrow.svg')}}" alt="arrow"></span>
+                    </div> 
+                </div>
+                {% elseif app.session.get('username') is empty %}
+
+                {% endif %}
+            </nav>
+            <nav id="mobile-nav">
+                <div class="logo-mobile">
+                    <a href="./index.html">
+                        <img class="logo-mb" src="{{asset('img/logo.png')}}" alt="Association culturelle Koleka logo">
+                    </a>
+                </div>
+                    <i class="fas fa-bars" onclick="toggleMobileMenu(this)"></i>
+                <ul class="mobile-list closed-menu">
+                    <li><a href="{{path('accueil')}}" class="mobile-link">Accueil</a></li>
+                    <li><a href="{{path('legende')}}" class="mobile-link">Legende</a></li>
+                    <li><a href="{{path('a-propos')}}" class="mobile-link">A propos</a></li>
+                    <li><a href="{{path('inscription')}}" class="mobile-link">inscription</a></li>
+                    <li><a href="{{path('contact')}}" class="mobile-link">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+        {% block body %}{% endblock %}
+        <footer>
+            <div class="icon-btn">
+                    <a href="https://fr-fr.facebook.com/" class="social"><i class="f-social fab fa-facebook-f"></i></a> 
+                    <a href="https://www.instagram.com/?hl=fr" class="social"><i class="f-social fab fa-instagram"></i></a>
+                    <a href="https://www.snapchat.com/fr-FR" class="social"><i class="f-social fab fa-snapchat-ghost"></i></a>
+                    <a href="https://twitter.com/?lang=fr" class="social"><i class="f-social fab fa-twitter"></i></a>
+            </div>
+            <div class="site-map">
+                <ul class="site-map-link">
+                    <li><a href="{{path('accueil')}}">Accueil</a></li>
+                    <li><a href="{{path('legende')}}">Legendes</a></li>
+                    <li><a href="{{path('a-propos')}}">A Propos</a></li>
+                    <li><a href="{{path('inscription')}}">Inscription</a></li>
+                    <li><a href="{{path('app_login')}}">Connexion</a></li>
+                    <li><a href="{{path('contact')}}">Contact</a></li>
+                </ul>
+                <p class="credit">Christopher Saury © <span class="year"></span> Tout droits réservés</p>
+            </div>
+        </footer>
+        {% block js %}{% endblock %}
+        <script src="{{asset('js/nav-footer.js')}}"></script>
+    </body>
+</html>

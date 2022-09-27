@@ -1,0 +1,138 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap');
+/*************** CONTACT PAGE **************************/
+#contact{
+    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+#contact .map{
+    width: 100%;
+    height: 400px;
+}
+#contact .map iframe{
+    width: 100%;
+    height: 100%;
+}
+.form-section{
+    display: flex;
+    flex-direction: row;
+    padding: 2%;
+}
+.info{
+    width: 40%;
+    height: auto;
+}
+.org-info{
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    margin-top: 20%;
+}
+.org-info div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+}
+.org-info .ct-intro-txt p{
+    font-family: 'Mulish', sans-serif;
+    font-size: 16px;
+    width: 80%;
+    padding-left: 6%;
+}
+.org-info .info-icon{
+    width: 22px;
+    height: 22px;
+}
+.org-info div .info-name{
+    display: block;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 16px;
+    display: block;
+    padding-top: 16px;
+}
+.org-info div .info-txt{
+    color: #aaaaaa;
+}
+
+/*********** FORM PART ***************/
+.info-ct{
+    width: 60%;
+    height: auto;
+    border: 1.4px solid gainsboro;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+    padding: 110px;
+}
+.info-ct h2{
+    font-family: 'Libre Caslon Display', serif;
+    font-size: 46px;
+    margin-bottom: 10px;
+}
+.info-ct label{
+    font-family: 'Cabin Condensed', sans-serif;
+    font-size: 15px;
+}
+.info-ct input,
+.info-ct textarea{
+    
+    font-size: 15px;
+    letter-spacing: 0.5px;
+}
+.info-ct .line{
+    width: 100%;
+    display: flex;
+    flex-direction: row; 
+    justify-content: center;
+    gap: 20px;
+}
+.info-ct div{
+    width: 100%;
+}
+.info-ct .line .lastname,
+.info-ct .line .firstname,
+.info-ct .mail,
+.info-ct .subject,
+.info-ct .message{
+    display: flex;
+    flex-direction: column;
+    line-height: 3rem;
+}
+.info-ct input{
+    padding: 12px 20px;
+    width: 100%;
+    border-radius: 1px;
+    border: 1px solid gainsboro;
+}
+.info-ct textarea{
+    border-radius: 1px;
+    border: 1px solid gainsboro;
+    padding: 4%;
+}
+.btn-wrapper{
+    width: 100%;
+    height: auto;
+}
+.btn-wrapper button{
+    padding: 10px 40px;
+    background-color: #222;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Cabin Condensed', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
+    border: none;
+    cursor: pointer;
+}
+.btn-wrapper button:hover{
+    background-color: #E6D18E;
+    color: #222;
+}

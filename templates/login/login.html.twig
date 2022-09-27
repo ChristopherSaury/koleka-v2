@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Connexion{% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/login.css')}}"> {% endblock %}
+
+{% block style %}
+    <style>
+        #login{
+            padding: 8% 0;
+            width: 100%;
+            height: 140vh;
+            background: url('{{asset("img/fantasy-landscape.jpg")}}')
+            center center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+    </style>
+{% endblock %}
+{% block body %}
+<section id="login">
+    <form method="post" action="{{path('app_login')}}">
+        <h1>Se connecter à Koleka</h1>
+        <div class="identification">
+            <label for="email"></label>
+            <input type="email" value="{{ last_username }}" id="email" name="email" placeholder="Entrez votre Email">
+        </div>
+        <div class="identification-psw">
+            <label for="id-psw"></label>
+            <input type="password" id="id-psw" name="id-psw" placeholder="Mot de Passe">
+        </div>
+        <div class="rmb-me">
+            <input type="checkbox">
+            <p> Se souvenir de moi </p>
+        </div>
+        <div class="lg-btn-wrapper">
+            <a href="#">Connexion</a>
+        </div>
+        <p class="signup-link">
+            Vous n'avez pas de compte ? <a href="{{path('inscription')}}">créez-en un</a> 
+        </p>
+        <input type="hidden" name="_csrf_token"
+        value="{{ csrf_token('authenticate') }}"
+ >
+    </form>
+</section>
+{% include './form/newsletter.html.twig' %}
+{% endblock %}
