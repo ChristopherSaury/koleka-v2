@@ -37,10 +37,10 @@
                         </ul>
                     </div>
                 </div>
-                {% if app.session.get('username') %}
+                {% if app.user.userIdentifier is defined %}
                 <div class="user-nav">
                     <div>
-                        <p>Bienvenue,  {{ app.session.get('username') }}</p>
+                        <p>Bienvenue</p>
                     </div>
                     <div class="user-menu">
                         <span><p>Menu</p> <img id="lg-arrow" style="width: 20px ; height: 20px" src="{{asset('img/arrow.svg')}}" alt="arrow"></span>
