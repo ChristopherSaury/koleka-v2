@@ -22,8 +22,8 @@
 
 #signup form #lastname,
 #signup form #firstname,
-#signup form #user_email,
-#signup form #password,
+#signup form #email,
+#signup form #plainPassword,
 #signup form #cf-psw{
     width: 100%;
     padding: 15px 20px;
