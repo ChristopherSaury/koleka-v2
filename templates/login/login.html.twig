@@ -31,8 +31,8 @@
             <input type="email" value="{{ last_username }}" id="email" name="email" placeholder="Entrez votre Email">
         </div>
         <div class="identification-psw">
-            <label for="id-psw"></label>
-            <input type="password" id="id-psw" name="id-psw" placeholder="Mot de Passe">
+            <label for="password"></label>
+            <input type="password" id="password" name="password" placeholder="Mot de Passe">
         </div>
         <div class="rmb-me">
             <input type="checkbox">
@@ -42,7 +42,7 @@
             <button type="submit">Connexion</button>
         </div>
         <p class="signup-link">
-            Vous n'avez pas de compte ? <a href="{{path('inscription')}}">créez-en un</a> 
+            Vous n'avez pas de compte ? <a href="{{path('app_register')}}">créez-en un</a> 
         </p>
         <input type="hidden" name="_csrf_token"
         value="{{ csrf_token('authenticate') }}"

@@ -8,7 +8,7 @@
     height: auto;
 }
 #login form #email,
-#login form #id-psw{
+#login form #password{
     width: 100%;
     padding: 15px 20px;
     font-family: 'Cabin Condensed', sans-serif;
