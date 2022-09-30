@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Mate+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cabin+Condensed&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Reem+Kufi+Fun&display=swap');
 *{
     margin: 0;
     padding: 0;
@@ -62,21 +63,49 @@ html{
 #desktop ul a:hover{
     color: #E6D18E;
 }
+/********************** USER NAV ********************************/
 #desktop .user-nav{
     width: 100%;
     height: 30px;
-    background-color: #c6c4c4;
+    background-color: #E6D18E;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
     border-bottom: 1px solid rgba(239, 239, 239, 0.71);
+    font-family: 'Reem Kufi Fun', sans-serif;
 }
-#desktop .user-nav .user-menu span{
+#desktop .user-nav .user-menu .user-menu-icon{
+    position: relative;
     display: flex;
     flex-direction: row;
     gap: 5px;
     cursor: pointer;
+}
+#desktop .user-nav .user-menu .user-config{
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 100%;
+    right: 14%;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #E6D18E;
+}
+#desktop .user-nav .user-menu .user-config li{
+    width: 100%;
+    padding: 5% 0;
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+}
+#desktop .user-nav .user-menu .user-config a{
+    color: #222;
+}
+#desktop .user-nav .user-menu .user-config li:hover{
+    background-color: #ffebb0;
 }
 /***************** MOBILE NAVBAR *******************/
 #mobile-nav{
@@ -249,6 +278,11 @@ footer .credit{
     font-size: 14px;
     letter-spacing: 1px;
     border-radius: 1px;
+    border: none;
+    cursor: pointer;
+}
+.nsl-btn:hover{
+    background-color: rgb(70, 68, 68);
 }
 .nsl-sub{
     display: flex;
