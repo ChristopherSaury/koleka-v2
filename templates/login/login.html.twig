@@ -28,11 +28,11 @@
         {% endif %}
         <div class="identification">
             <label for="email"></label>
-            <input type="email" value="{{ last_username }}" id="email" name="email" placeholder="Entrez votre Email">
+            <input type="email" value="{{ last_username }}" id="email" name="email" placeholder="Entrez votre Email" autocomplete="email">
         </div>
         <div class="identification-psw">
             <label for="password"></label>
-            <input type="password" id="password" name="password" placeholder="Mot de Passe">
+            <input type="password" id="password" name="password" placeholder="Mot de Passe" autocomplete="current-password">
         </div>
         <div class="rmb-me">
             <input type="checkbox">
