@@ -28,16 +28,25 @@
                     <p>-- Sélectionner un Pays --</p> <img id="lg-arrow" style="width: 20px ; height: 20px" src="{{asset('img/arrow.svg')}}" alt="arrow">
                 </span>     
                 <ul id="choice-menu" class="close-lg-menu">
-                    <li class="lg-continent-name"> Afrique</li>
-                    <a href="./pays/congoRdc.html"><li class="country-link">Congo</li></a>
-                    <a href="./pays/togo.html"><li class="country-link">Togo</li></a>
-                    <li class="lg-continent-name">Amerique</li>
-                    <a href="./pays/usa.html"><li class="country-link">Etats-Unis</li></a>
-                    <a href="./pays/haiti.html"><li class="country-link">Haïti</li></a>
-                    <a href="./pays/mexique.html"><li class="country-link">Mexique</li></a>
-                    <li class="lg-continent-name">Europe</li>
-                    <a href="./pays/france.html"><li class="country-link">France</li></a>
-                    <a href="./pays/grece.html"><li class="country-link">Grèce</li></a>
+                        <li class="lg-continent-name"> Afrique </li>
+                        {% for country in african_countries %}
+                        <a href="#"><li class="country-link">{{ country.name }}</li></a>
+                        {% endfor %}
+
+                        <li class="lg-continent-name"> Amerique </li>
+                        {% for country in american_countries %}
+                        <a href="#"><li class="country-link">{{ country.name }}</li></a>
+                        {% endfor %}
+
+                        <li class="lg-continent-name"> Asie </li>
+                        {% for country in asian_countries %}
+                        <a href="#"><li class="country-link">{{ country.name }}</li></a>
+                        {% endfor %}
+
+                        <li class="lg-continent-name"> Europe </li>
+                        {% for country in european_countries %}
+                        <a href="#"><li class="country-link">{{ country.name }}</li></a>
+                        {% endfor %}
                 </ul>
             </div>
         </div>

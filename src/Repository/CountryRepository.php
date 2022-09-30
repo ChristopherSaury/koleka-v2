@@ -38,6 +38,42 @@ class CountryRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function displayAfricanCountry(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT c 
+        FROM App\Entity\Country c
+        WHERE c.continent = 1
+        ORDER BY c.name ASC');
+        return $query->getResult();
+    }
+    public function displayAmericanCountry(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT c 
+        FROM App\Entity\Country c
+        WHERE c.continent = 2
+        ORDER BY c.name ASC');
+        return $query->getResult();
+    }
+    public function displayAsianCountry(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT c 
+        FROM App\Entity\Country c
+        WHERE c.continent = 3
+        ORDER BY c.name ASC');
+        return $query->getResult();
+    }
+    public function displayEuropeanCountry(){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT c 
+        FROM App\Entity\Country c
+        WHERE c.continent = 4
+        ORDER BY c.name ASC');
+        return $query->getResult();
+    }
 
 //    /**
 //     * @return Country[] Returns an array of Country objects
