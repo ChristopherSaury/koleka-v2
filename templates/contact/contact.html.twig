@@ -77,3 +77,16 @@
 <hr>
     {% include './form/newsletter.html.twig' %}
 {% endblock %}
+
+{% block js %} 
+    <script>
+        let userNavContact = document.querySelector("#desktop .user-nav");
+        let contactPage = document.querySelector("#contact");
+
+        if(userNavContact){
+            contactPage.style.paddingTop = '110px';
+        }else{
+            contactPage.style.paddingTop = '80px';
+        }
+    </script> 
+{% endblock %}
