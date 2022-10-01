@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+#country-legends{
+    padding-top: 80px;
+    width: 100%;
+    height: auto;
+}
+#country-legends .country-title{
+    text-align: center;
+    margin-top: 5%;
+    font-size: 30px;
+    font-family: 'Cinzel', serif;
+}
+#country-legends .country-content{
+    padding: 0 0 0 10%;
+}
+#country-legends .country-content .country-sub-title{
+    font-family: 'Cinzel', serif;
+}
+#country-legends .country-content a{
+    text-decoration: none;
+    font-size: 17px;
+}
+#country-legends .country-content a:hover{
+    text-decoration: underline;
+}
+#country-legends .country-content ul{
+    padding: 2% 0 0 4%;
+}
+#country-legends .country-sub-title{
+    padding-top: 5%;
+    font-size: 30px;
+    position: relative;
+}
+#country-legends .country-sub-title::after{
+    content: '';
+    width: 88%;
+    position: absolute;
+    left: 0;
+    bottom: 1px;
+    border-width: 0 0 1px;
+    border-style: solid;
+}

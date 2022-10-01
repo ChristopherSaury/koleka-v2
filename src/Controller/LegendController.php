@@ -18,4 +18,12 @@ class LegendController extends AbstractController{
             'european_countries' => $country->displayEuropeanCountry()
         ]);
     }
+    #[Route("/legende/pays/{id}", name:"one_country")]
+    public function displayCountryPage($id, CountryRepository $country){
+        $one_country = $country->find($id);
+        return $this->render('legend/country.html.twig',[
+            'controller_name'=> 'LegendController',
+            'country' => $one_country
+        ]);
+    }
 }
