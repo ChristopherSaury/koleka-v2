@@ -38,6 +38,11 @@
     justify-content: space-between;
     cursor: pointer;
 }
+#legend .country-entry .lg-selector p{
+    margin-bottom: 0;
+    font-family: 'Times New Roman', serif;
+    color: black;
+}
 #legend .country-entry #lg-arrow{
     transform: rotate(0deg);
 }
@@ -81,7 +86,9 @@
     margin-bottom: 6%;
     padding-left: 2%;
     font-family: 'Mulish', sans-serif;
+    font-weight: 700;
     font-size: 50px;
+    color: black;
 }
 #legend .monthly-selection .container-section{
     width: 100%;
@@ -113,7 +120,8 @@
     text-decoration: none;
     color: #222;
     font-family: 'Cinzel', serif;
-    font-size: 15px;
+    font-weight: 700;
+    font-size: 22.5px;
     text-align: center;
     width: 350px;
 }

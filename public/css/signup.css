@@ -3,7 +3,8 @@
 #signup form{
     margin-top: 4%;
     margin-right: 8%;
-    padding: 50px 50px;
+    margin-bottom: 4%;
+    padding: 40px 50px;
     background-color: #fff;
     width: 600px;
     height: auto;
@@ -26,7 +27,7 @@
 #signup form #plainPassword,
 #signup form #cf-psw{
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 20px;
     font-family: 'Cabin Condensed', sans-serif;
     margin-bottom: 4%;
     border-radius: 1px;
@@ -34,9 +35,10 @@
 }
 #signup form h2{
     text-align: center;
-    margin-bottom: 8%;
+    margin-bottom: 4%;
     font-family: 'Libre Caslon Display', serif;
-    font-size: 30px;
+    font-weight: 700;
+    font-size: 40px;
 }
 #signup .rmb-me{
     display: flex;
@@ -48,7 +50,7 @@
 #signup .sp-btn-wrapper{
     display: flex;
     justify-content: center;
-    margin-top: 10%;
+    margin-top: 4%;
 }
 #signup .sp-btn-wrapper button{
     width: 100%;
@@ -70,6 +72,7 @@
 }
 #signup .signup-link{
     display: block;
-    padding: 5% 0 5% 0;
+    padding: 1% 0;
+    margin-bottom: 0;
 }
 

@@ -5,7 +5,7 @@
 {% block style %}
     <style>
         #signup{
-            padding: 8% 0;
+            padding-top: 80px ;
             width: 100%;
             height: 140vh;
             background: url('{{asset("img/fantasy-forest.jpg")}}')
@@ -47,7 +47,7 @@
         </div>
         <div class="rmb-me">
             <input type="checkbox" id="agreeTerms" name="agreeTerms">
-            <p> J'accepte les conditions d'utilisation </p>
+            <label for="agreeTerms"> J'accepte les conditions d'utilisation </label>
         </div>
         <div class="sp-btn-wrapper">
             <button type="submit">Terminer</button>
@@ -58,4 +58,17 @@
     </form>
 </section>
 {% include './form/newsletter.html.twig' %}
+{% endblock %}
+
+{% block js %} 
+    <script>
+        let userNavSu = document.querySelector("#desktop .user-nav");
+        let signupPage = document.querySelector("#signup");
+        
+        if(userNavSu){
+            signupPage.style.paddingTop = '120px';
+        }else{
+            signupPage.style.paddingTop = '80px';
+        }
+    </script> 
 {% endblock %}

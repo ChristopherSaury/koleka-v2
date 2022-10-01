@@ -2,7 +2,7 @@
 #login form{
     margin-top: 5%;
     margin-right: 15%;
-    padding: 90px 50px;
+    padding: 60px 50px;
     background-color: #fff;
     width: 400px;
     height: auto;
@@ -10,9 +10,9 @@
 #login form #email,
 #login form #password{
     width: 100%;
-    padding: 15px 20px;
+    padding: 10px 20px;
     font-family: 'Cabin Condensed', sans-serif;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
     border-radius: 1px;
     border: 1px solid gainsboro;
 }
@@ -20,6 +20,7 @@
     text-align: center;
     margin-bottom: 8%;
     font-family: 'Libre Caslon Display', serif;
+    font-weight: 700;
     font-size: 30px;
 }
 #login .rmb-me{

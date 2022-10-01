@@ -70,11 +70,12 @@
     flex-direction: column;
     align-items: center;
     gap: 40px;
-    padding: 110px;
+    padding: 90px;
 }
 .info-ct h2{
     font-family: 'Libre Caslon Display', serif;
     font-size: 46px;
+    font-weight: 700;
     margin-bottom: 10px;
 }
 .info-ct label{
@@ -104,10 +105,10 @@
 .info-ct .message{
     display: flex;
     flex-direction: column;
-    line-height: 3rem;
+    /* line-height: 3rem; */
 }
 .info-ct input{
-    padding: 12px 20px;
+    padding: 10px 20px;
     width: 100%;
     border-radius: 1px;
     border: 1px solid gainsboro;
