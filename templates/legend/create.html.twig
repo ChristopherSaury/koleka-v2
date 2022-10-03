@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Association culturelle Koleka - Ajouter une Légende {% endblock %}
+
+{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/article-create.css')}}"> {% endblock %}
+{% block style %}{% endblock %}
+
+{% block body %}
+
+    <section id="legend-create">
+        <div class="page-container">
+                <div class="form-container">
+                    <h2 class="text-center mt-4">Ajouter une légende</h2>
+                    {{ form(legendForm) }}
+                </div>
+        </div>
+    </section>
+
+{% endblock %}

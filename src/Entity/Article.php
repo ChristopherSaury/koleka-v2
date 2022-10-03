@@ -26,8 +26,8 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?User $author = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $published_at = null;
+    #[ORM\Column (length: 30)]
+    private ?string $published_at = null;
 
     #[ORM\OneToMany(mappedBy: 'article', targetEntity: Comment::class, orphanRemoval: true)]
     private Collection $comments;
@@ -82,12 +82,12 @@ class Article
         return $this;
     }
 
-    public function getPublishedAt(): ?\DateTimeImmutable
+    public function getPublishedAt(): ?string
     {
         return $this->published_at;
     }
 
-    public function setPublishedAt(\DateTimeImmutable $published_at): self
+    public function setPublishedAt(?string $published_at): self
     {
         $this->published_at = $published_at;
 

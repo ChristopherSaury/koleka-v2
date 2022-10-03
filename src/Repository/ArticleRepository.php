@@ -39,6 +39,16 @@ class ArticleRepository extends ServiceEntityRepository
         }
     }
 
+    public function getCountryArticle($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT a
+        FROM App\Entity\Article a
+        WHERE a.country = :id')
+        ->setParameter(':id', $id);
+        return $query->getResult();
+    }
+
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */

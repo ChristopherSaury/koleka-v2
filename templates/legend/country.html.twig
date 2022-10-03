@@ -24,7 +24,10 @@
         <div class="country-content">
             <h1 class="country-sub-title">Mythes et légendes {{ country.name }}</h1>
             <ul>
-                <li><a href="#">Mami Wata, Mère des Eaux</a></li>
+
+                {% for legend in article %}
+                <li><a href="#">{{ legend.title }}</li>
+                {% endfor %}
             </ul>
         </div>
 </section>
