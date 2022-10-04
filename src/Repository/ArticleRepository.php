@@ -49,6 +49,16 @@ class ArticleRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function getUserArticle($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT a
+        FROM App\Entity\Article a
+        WHERE a.author = :id')
+        ->setParameter(':id', $id);
+        return $query->getResult();
+    }
+
 //    /**
 //     * @return Article[] Returns an array of Article objects
 //     */

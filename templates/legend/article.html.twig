@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article - {{ legend.title }}{% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/article.css')}}"> {% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+<section id="mythPage">
+    <article>
+        <h1 class="myth-page-title">{{ legend.title }}</h1>
+        <div class="article-info">
+            <p class="article-author">{{ legend.author.getFirstname() }} {{ legend.author.getLastname() }}</p>
+            <p>publié le: {{ legend.getPublishedAt()|date("d-m-Y H:i") }}</p>
+        </div>
+        {% if legend.illustration is defined %}
+        <figure class="article-img-container">
+            <img class="article-img" src="{{ asset('uploads/') }}{{legend.illustration}}" alt="illustration légende {{ legend.title }}">
+            <figcaption>
+                Image d'illustration de la légende {{ legend.title }}
+            </figcaption>
+        </figure>
+        {% endif %}
+        <div class="article-body">
+            <p>
+               {{ legend.content }}
+            </p>
+        </div>
+    </article>
+</section>
+{% endblock %}

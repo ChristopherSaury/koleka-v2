@@ -26,7 +26,7 @@
             <ul>
 
                 {% for legend in article %}
-                <li><a href="#">{{ legend.title }}</li>
+                <li><a href="{{path('article', {id: legend.id})}}">{{ legend.title }}</a></li>
                 {% endfor %}
             </ul>
         </div>

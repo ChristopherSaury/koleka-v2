@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@700&display=swap');
+#mythPage{
+    padding-top: 80px;
+    padding-bottom: 4%;
+}
+#mythPage article{
+    padding-top: 4%;
+}
+#mythPage .article-info{
+    margin-bottom: 2%;
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+}
+#mythPage .article-info p{
+    display: block;
+    padding-left: 15%;
+    margin-bottom: 0;
+}
+#mythPage .article-info .article-author{
+    font-weight: bolder;
+    font-size: 25px;
+    font-family: 'Teko', sans-serif;
+}
+#mythPage .myth-page-title{
+    text-align: center;
+    font-size: 60px;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 10px;
+}
+#mythPage .article-img-container{
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#mythPage .article-img{
+    width: 70%;
+    height: auto;
+}
+#mythPage article figcaption{
+    margin-top: 5px;
+    font-weight: bolder;
+    font-size: 15px;
+}
+#mythPage .article-body{
+    margin-top: 4%;
+    padding: 0 15%;
+}
+
+@media screen and (max-width: 576px){
+    #mythPage .myth-page-title{
+        font-size: 30px;
+    }
+    #mythPage article figcaption{
+        padding: 0 15%;
+    }
+}

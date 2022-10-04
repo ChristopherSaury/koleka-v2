@@ -36,6 +36,9 @@ class Article
     #[ORM\JoinColumn(nullable: false)]
     private ?Country $country = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $illustration = null;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -132,6 +135,18 @@ class Article
     public function setCountry(?Country $country): self
     {
         $this->country = $country;
+
+        return $this;
+    }
+
+    public function getIllustration(): ?string
+    {
+        return $this->illustration;
+    }
+
+    public function setIllustration(?string $illustration): self
+    {
+        $this->illustration = $illustration;
 
         return $this;
     }
