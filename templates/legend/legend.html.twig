@@ -30,22 +30,22 @@
                 <ul id="choice-menu" class="close-lg-menu">
                         <li class="lg-continent-name"> Afrique </li>
                         {% for country in african_countries %}
-                        <a href="{{path('one_country', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
+                        <a href="{{path('un_pays', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
                         {% endfor %}
 
                         <li class="lg-continent-name"> Amerique </li>
                         {% for country in american_countries %}
-                        <a href="{{path('one_country', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
+                        <a href="{{path('un_pays', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
                         {% endfor %}
 
                         <li class="lg-continent-name"> Asie </li>
                         {% for country in asian_countries %}
-                        <a href="{{path('one_country', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
+                        <a href="{{path('un_pays', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
                         {% endfor %}
 
                         <li class="lg-continent-name"> Europe </li>
                         {% for country in european_countries %}
-                        <a href="{{path('one_country', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
+                        <a href="{{path('un_pays', {id: country.id})}}"><li class="country-link">{{ country.name }}</li></a>
                         {% endfor %}
                 </ul>
             </div>
