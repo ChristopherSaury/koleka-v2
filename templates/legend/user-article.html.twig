@@ -1,8 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{% endblock %}
-{% block stylesheets %}{% endblock %}
+{% block title %}Association culturelle Koleka - Mes Légendes{% endblock %}
+{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/user-article.css')}}"> {% endblock %}
 
 {% block body %}
-
+    <section id="user-article">
+        <div class="container">
+            <div class="row">
+                <h2 class="text-center">Mes articles</h2>
+                {% for legend in user_articles %}
+                <div class="card m-2" style="width: 18rem; height: 400px;">
+                    {% if legend.illustration is not null %}
+                    <img style="height: 11rem;" src="{{asset('uploads/')}}{{ legend.illustration }}" class="card-img-top" alt="image de couverture {{legend.title}}">
+                    {% elseif legend.illustration is null %}
+                    <img style="height: 11rem;" src="{{asset('img/avatar.png')}}" class="card-img-top" alt="placeholder image de couverture">
+                    {% endif %}
+                    <div class="card-body">
+                      <h5 class="card-title text-center">{{legend.title}}</h5>
+                      <p class="card-text">{{ legend.content|slice(0, 100) }}...</p>
+                      <a href="{{path('modifier_article', {id: legend.id})}}" class="btn btn-primary">Modifier</a>
+                    </div>
+                  </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
 {% endblock %}

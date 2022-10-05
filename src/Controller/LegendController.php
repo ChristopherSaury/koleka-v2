@@ -79,7 +79,7 @@ class LegendController extends AbstractController{
     public function userArticle($id, ArticleRepository $article){
         //if($this->getUser()->getId() != $id) dd("error 403");
         return $this->render('legend/user-article.html.twig',[
-            'user_article' => $article->getUserArticle($id)
+            'user_articles' => $article->getUserArticle($id)
         ]);
     }
     #[Route("legende/article/{id}", name:"article")]
@@ -88,5 +88,45 @@ class LegendController extends AbstractController{
         return $this->render('legend/article.html.twig',[
             'legend' => $article->find($id)
         ]);
+    }
+    #[Route("/legende/modifier/article/{id}", name:"modifier_article")]
+    #[IsGranted("ROLE_USER")]
+    public function updateArticle(Request $request, Article $article, EntityManagerInterface $em, SluggerInterface $slugger){
+        $form = $this->createForm(ArticleType::class, $article);
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid()){
+
+            $img_file = $form->get('illustration')->getData();
+
+            if($img_file){
+                $originFileName = pathinfo($img_file->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originFileName);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $img_file->guessExtension();
+
+                try{
+                    $img_file->move(
+                        $this->getParameter('images_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e){
+                    dd($e);
+                }
+                $previous_image = basename($article->getIllustration());
+                unlink($this->getParameter('kernel.project_dir') . '/public/uploads/' . $previous_image);
+
+                $article->setIllustration($newFilename);
+                
+            }            
+
+
+            $em->persist($article);
+            $em->flush();
+          
+            return $this->redirect($this->generateUrl('mes_articles', array('id' => $this->getUser()->getId())));
+        }else{
+            return $this->render("legend/article-update.html.twig",[
+                "updateLegend" => $form->createView()
+            ]);
+        }
     }
 }

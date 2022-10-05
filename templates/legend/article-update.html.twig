@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Modifier Légendes{% endblock %}
+
+{% block stylesheets %}<link rel="stylesheet" href="{{asset('css/article-create.css')}}">{% endblock %}
+
+{% block body %}
+<section id="legend-create">
+    <div class="page-container">
+            <div class="form-container">
+                <h2 class="text-center mt-4">Modifier une légende</h2>
+                {{ form(updateLegend) }}
+            </div>
+    </div>
+</section>
+{% endblock %}
