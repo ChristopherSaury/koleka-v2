@@ -15,6 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class LegendController extends AbstractController{
+
     #[Route("/legende", name:"legende")]
     public function legende(CountryRepository $country){
         
@@ -26,6 +27,7 @@ class LegendController extends AbstractController{
             'european_countries' => $country->displayEuropeanCountry()
         ]);
     }
+
     #[Route("/legende/pays/{id}", name:"un_pays")]
     public function displayCountryPage($id, CountryRepository $country, ArticleRepository $article){
         $one_country = $country->find($id);
@@ -67,13 +69,14 @@ class LegendController extends AbstractController{
             $em->persist($new_article);
             $em->flush();
              
-            return $this->redirectToRoute('accueil');
+            return $this->redirect($this->generateUrl('mes_articles', array('id' => $this->getUser()->getId())));
         }
         return $this->render('legend/create.html.twig',[
             'controller_name' => 'LegendController',
             'legendForm' => $form->createView(),
         ]);
     }
+
     #[Route("/legende/articles/user/{id}", name:"mes_articles")]
     #[IsGranted('ROLE_USER')]
     public function userArticle($id, ArticleRepository $article){
@@ -89,6 +92,7 @@ class LegendController extends AbstractController{
             'legend' => $article->find($id)
         ]);
     }
+
     #[Route("/legende/modifier/article/{id}", name:"modifier_article")]
     #[IsGranted("ROLE_USER")]
     public function updateArticle(Request $request, Article $article, EntityManagerInterface $em, SluggerInterface $slugger){
@@ -115,18 +119,30 @@ class LegendController extends AbstractController{
                 unlink($this->getParameter('kernel.project_dir') . '/public/uploads/' . $previous_image);
 
                 $article->setIllustration($newFilename);
-                
             }            
-
 
             $em->persist($article);
             $em->flush();
-          
             return $this->redirect($this->generateUrl('mes_articles', array('id' => $this->getUser()->getId())));
         }else{
             return $this->render("legend/article-update.html.twig",[
                 "updateLegend" => $form->createView()
             ]);
         }
+    }
+    #[Route("/legende/supprimer/{id}", name:"supprimer_article")]
+    #[IsGranted("ROLE_USER")]
+    public function deleteArticle( Article $article ,EntityManagerInterface $em){
+
+        if($article->getIllustration()){
+            $illustration = basename($article->getIllustration());
+            unlink($this->getParameter('kernel.project_dir') . '/public/uploads/' . $illustration);
+        }
+
+        $em->remove($article);
+        $em->flush();
+
+        return $this->redirect($this->generateUrl('mes_articles', array('id' => $this->getUser()->getId())));
+
     }
 }

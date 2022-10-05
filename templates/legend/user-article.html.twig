@@ -19,6 +19,7 @@
                       <h5 class="card-title text-center">{{legend.title}}</h5>
                       <p class="card-text">{{ legend.content|slice(0, 100) }}...</p>
                       <a href="{{path('modifier_article', {id: legend.id})}}" class="btn btn-primary">Modifier</a>
+                      <a onclick="confirm('Voulez-vous vraiment supprimer cet article ?')" href="{{path('supprimer_article', {id: legend.id})}}" class="btn btn-danger">Supprimer</a>
                     </div>
                   </div>
                 {% endfor %}
