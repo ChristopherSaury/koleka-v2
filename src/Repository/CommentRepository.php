@@ -39,6 +39,17 @@ class CommentRepository extends ServiceEntityRepository
         }
     }
 
+    public function getArticleComment($id){
+        $em = $this->getEntityManager();
+        $query = $em->createQuery('
+        SELECT c
+        FROM App\Entity\Comment c
+        WHERE c.article = :id
+        ORDER BY c.published_at DESC')
+        ->setParameter(':id', $id);
+        return $query->getResult();
+    }
+
 //    /**
 //     * @return Comment[] Returns an array of Comment objects
 //     */

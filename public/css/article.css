@@ -50,6 +50,141 @@
     margin-top: 4%;
     padding: 0 15%;
 }
+/************************ COMMENT SECTION ********************************/
+#mythPage .comment-section {
+    width: 100%;
+    height: auto;
+}
+#mythPage .comment-section .form-container{
+    margin-top: 2%;
+    padding: 0 15%;
+    display: flex;
+    flex-direction: column;
+}
+#mythPage textarea{
+    resize: none;
+    border-radius: 0;
+}
+#mythPage .comment-section .form-container button{
+    margin-top: 10px;
+    float: right;
+    background-color: #222;
+    color: #fff;
+    border-radius: 0%;
+    padding: 1%;
+}
+#mythPage .comment-section .form-container button:hover{
+    background-color: rgb(67, 65, 65);
+}
+#mythPage .comment-section .comment-display-container{
+    margin-top: 10px;
+}
+#mythPage .comment-section .comment-display-container .comment .user{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}
+#mythPage .comment-section .comment-display-container .comment .user .pseudo{
+    font-weight: 700;
+    color: #000;
+}
+#mythPage .comment-section .comment-display-container .comment{
+    /* background-color: rgb(228, 216, 216); */
+    width: 100%;
+    height: auto;
+    
+}
+#mythPage .comment-section .comment-display-container .comment p{
+    margin-bottom: 0;
+}
+#mythPage .comment-section .comment-display-container .comment .time{
+    color: grey;
+    font-weight: 500;
+}
+#mythPage .comment-section .comment-display-container .comment .replies{
+    margin-left :20px;
+}
+#mythPage .comment-section .comment-display-container .replies .comment{
+    margin-top: 20px;
+}
+/***************** COMMENT MODAL ******************************/
+#mythPage .com-modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 999;
+}
+#mythPage .com-modal i{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+#mythPage .com-modal form{
+    width: 50%;
+    height: auto;
+}
+#mythPage .com-modal form textarea{
+    width: 100%;
+    height: 250px;
+}
+#mythPage .com-modal form button{
+    margin-top: 10px;
+    float: right;
+    background-color: #e6cd7e;
+    color: #000;
+    border-radius: 0%;
+    padding: 1%;
+}
+#mythPage .com-modal form button:hover{
+    background-color: #efdda1;
+}
+/******************* UPDATE MODAL *******************************************/
+#mythPage .update-modal{
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.92);
+    z-index: 999;
+}
+#mythPage .update-modal i{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    color: #fff;
+    cursor: pointer;
+}
+#mythPage .update-modal form{
+    width: 50%;
+    height: auto;
+}
+#mythPage .update-modal form textarea{
+    width: 100%;
+    height: 250px;
+}
+#mythPage .update-modal form button{
+    margin-top: 10px;
+    float: right;
+    background-color: #e6cd7e;
+    color: #000;
+    border-radius: 0%;
+    padding: 1%;
+}
+#mythPage .update-modal form button:hover{
+    background-color: #efdda1;
+}
 
 @media screen and (max-width: 576px){
     #mythPage .myth-page-title{

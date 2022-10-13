@@ -117,6 +117,7 @@
     border-radius: 1px;
     border: 1px solid gainsboro;
     padding: 4%;
+    resize: none;
 }
 .btn-wrapper{
     width: 100%;

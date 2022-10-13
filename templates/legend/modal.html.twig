@@ -1,0 +1,10 @@
+<div class="com-modal">
+    <i onclick="closeModal()" class="fas fa-times"></i>
+    <form action="#" method="post" id="cmt-form">
+        <textarea class="form-control data_reply" name="comment-input" id="comment-input" cols="30" rows="4" placeholder="Répondre à un commentaire"></textarea>
+        <input class="data_reply" type="hidden" id="comment_parentid" name="parentid">
+        <div class="col-lg-md-12">
+            <button type="submit" id="submit-reply" class="btn btn-comment" onclick="saveReply(); return false;">Ajouter une réponse</button>
+        </div>
+    </form>
+</div>

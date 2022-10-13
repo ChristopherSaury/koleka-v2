@@ -3,11 +3,13 @@
 {% block title %}Article - {{ legend.title }}{% endblock %}
 {% block stylesheets %} <link rel="stylesheet" href="{{asset('css/article.css')}}"> {% endblock %}
 
-{% block style %}{% endblock %}
+{% block javascripts %}
+    <script src="{{asset('js/article.js')}}"></script>
+{% endblock %}
 
 {% block body %}
 <section id="mythPage">
-    <article>
+    <article class="lg" id="{{ legend.id }}">
         <h1 class="myth-page-title">{{ legend.title }}</h1>
         <div class="article-info">
             <p class="article-author">{{ legend.author.getFirstname() }} {{ legend.author.getLastname() }}</p>
@@ -28,6 +30,29 @@
                {{ legend.content }}
             </p>
         </div>
+
+        <hr>
+        <div class="comment-section container">
+            <div class="row">
+                <div class="col-lg-md-12 form-container">
+                    <span id="message"></span>
+                    <form id="cmt-form">
+                        <textarea class="form-control form_data" name="comment-input" id="comment-input" cols="30" rows="4" placeholder="Ajouter un commentaire"></textarea>
+
+                        <div class="col-lg-md-12">
+                            <button type="submit" id="submit" class="btn btn-comment" onclick="save_data(); return false;">Ajouter un commentaire</button>
+                        </div>
+                    </form>
+                    <!-- <div class="comment-display-container">
+
+                    </div> -->
+                    {% include  './legend/comment.html.twig' %}
+                </div>
+            </div>
+        </div>
+
+        {% include  './legend/modal.html.twig' %}
+        {% include  './legend/modal-update.html.twig' %}
     </article>
 </section>
 {% endblock %}
