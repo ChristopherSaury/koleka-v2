@@ -31,11 +31,8 @@ class CommentController extends AbstractController{
         if(!empty($_POST['comment-input'])){
             
             $new_comment = new Comment;
-            if(isset($_POST['parentid'])){
-                $new_comment->setParent($comment->find($_POST['parentid']));
-            }else{
-                $new_comment->setParent(null);
-            }
+            
+            $new_comment->setParent(null);
             $new_comment->setContent($_POST['comment-input']);
             $new_comment->setAuthor($this->getUser());
             $new_comment->setPublishedAt(new DateTime());
@@ -45,6 +42,27 @@ class CommentController extends AbstractController{
             $em->flush();
 
             return new Response(200);            
+        }else{
+            return new Response(500);
+        }
+    }
+    
+    #[Route('/commentaire/ajouter/reply/{id}', name:'ajouter_com_reply')]
+    #[IsGranted('ROLE_USER')]
+    public function addReplyComment($id, EntityManagerInterface $em, CommentRepository $comment, ArticleRepository $article){
+        if(!empty($_POST['reply-input']) && $_POST['comment_parentid']){
+            $new_comment = new Comment;
+            
+            $new_comment->setParent($comment->find($_POST['comment_parentid']));
+            $new_comment->setContent($_POST['reply-input']);
+            $new_comment->setAuthor($this->getUser());
+            $new_comment->setPublishedAt(new DateTime());
+            $new_comment->setArticle($article->find($id));
+
+            $em->persist($new_comment);
+            $em->flush();
+
+            return new Response(200);
         }else{
             return new Response(500);
         }
@@ -64,8 +82,8 @@ class CommentController extends AbstractController{
     #[Route('/commentaire/modifier/handler/{id}', name:'modifier_com_handler')]
     #[IsGranted('ROLE_USER')]
     public function updateCommentHandler(EntityManagerInterface $em, Comment $comment){
-        if(!empty($_POST['comment-input'])){
-            $comment->setContent($_POST['comment-input']);
+        if(!empty($_POST['update-input'])){
+            $comment->setContent($_POST['update-input']);
             $em->persist($comment);
             $em->flush();
 

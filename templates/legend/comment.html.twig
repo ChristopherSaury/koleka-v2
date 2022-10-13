@@ -5,16 +5,34 @@
         <div class="comment">
             <div class="user"><p class="pseudo">{{ comment.getAuthor().getFirstname() }}  {{ comment.getAuthor().getLastname() }}</p><span class="time">publié le : {{comment.getPublishedAt()|date('d-m-Y')}}</span></div>
             <div class="userComment"><p>{{ comment.content }}</p></div>
-            <p><a onclick="openReplyModal(this)" data-reply data-id="{{ comment.id }}">Répondre</a></p>
-            <p><a onclick="retrieveComment(this)" data-update data-id="{{ comment.id }}">Modifier</a></p>
-            <a onclick="deleteCom(this)" data-id="{{comment.id}}" >Supprimer</a>
+            <div class="com-action">
+                <div class="reply-action">
+                    <a onclick="openReplyModal(this)" data-reply data-id="{{ comment.id }}" title="répondre">Répondre</a>
+                </div>
+                <div class="com-user-action">
+                    {% if app.user.userIdentifier is defined and app.user.userIdentifier == comment.author.email %}
+                    <a onclick="retrieveComment(this)" data-update data-id="{{ comment.id }}" title="modifier"><i class="fas fa-edit"></i></a>
+                    <a onclick="deleteCom(this)" data-id="{{comment.id}}" title="supprimer"><i class="fas fa-trash"></i></a>
+                    {% endif %}
+                </div>
+            </div>
             <div class="replies">
                 {% if comment.replies is not null %}
                 {% for reply in comment.replies %}
                 <div class="comment">
                     <div class="user"><p class="pseudo">{{ reply.getAuthor().getFirstname() }}  {{ reply.getAuthor().getLastname() }}</p><span class="time">publié le : {{comment.getPublishedAt()|date('d-m-Y')}}</span></div>
                     <div class="userComment"><p>{{ reply.content }}</p></div>
-                    <a onclick="deleteCom(this)" data-id="{{comment.id}}" >Supprimer</a>
+                    <div class="com-action">
+                        <div class="reply-action">
+                            <a style="display: none;" onclick="openReplyModal(this)" data-reply data-id="{{ comment.id }}">Répondre</a>
+                        </div>
+                        <div class="com-user-action">
+                            {% if app.user.userIdentifier is defined and app.user.userIdentifier == reply.author.email %}
+                            <a onclick="retrieveComment(this)" data-update data-id="{{ comment.id }}" title="modifier"><i class="fas fa-edit"></i></a>
+                            <a onclick="deleteCom(this)" data-id="{{comment.id}}" title="supprimer"><i class="fas fa-trash"></i></a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
                 {% endfor %}
                 {% endif %}

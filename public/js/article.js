@@ -1,7 +1,6 @@
 function openReplyModal(element){
     document.querySelector('#mythPage .com-modal').style.display = 'flex';
     document.querySelector('#comment_parentid').value = element.dataset.id;
-    console.log(document.querySelector('#comment_parentid').value = element.dataset.id);
 }
 function saveReply(){
     let form_element = document.getElementsByClassName('data_reply');
@@ -13,13 +12,13 @@ function saveReply(){
     document.querySelector('#mythPage .com-modal #submit-reply').disabled = true;
 
     const xhttp = new XMLHttpRequest();
-    xhttp.open('POST', '/commentaire/ajouter/' + document.querySelector('#mythPage .lg').id);
+    xhttp.open('POST', '/commentaire/ajouter/reply/' + document.querySelector('#mythPage .lg').id);
     xhttp.send(form_data);
 
     xhttp.onreadystatechange = function(){
         if(xhttp.readyState == 4 && xhttp.status == 200){
-            document.querySelector('#mythPage .com-modal #submit-reply').disabled = false;
-            document.querySelector('#mythPage .com-modal form').reset();
+            document.querySelector('#mythPage .com-modal #cmt-reply #submit-reply').disabled = false;
+            document.querySelector('#mythPage .com-modal #cmt-reply').reset();
             document.querySelector('#mythPage .com-modal').style.display = 'none';
         }
     }
@@ -39,7 +38,7 @@ async function retrieveComment(element){
     const response = await fetch('/commentaire/modifier/' + element.dataset.id);
     let data = await response.json();
     if(response){
-            document.querySelector('#mythPage .update-modal #comment-input').value = data.content;
+            document.querySelector('#mythPage .update-modal #update-input').value = data.content;
             formComId = document.querySelector('#mythPage .update-modal #comment_id').value = data.id;
         document.querySelector('#mythPage .update-modal').style.display = 'flex';
     }
@@ -78,6 +77,7 @@ function displayComment(){
 }
 
 function save_data(){
+    console.log('/commentaire/ajouter/' + document.querySelector('#mythPage .lg').id)
     let form_element = document.getElementsByClassName('form_data');
     //let form_element = document.querySelector('#mythPage #cmt-form #comment-input');
     let form_data = new FormData();

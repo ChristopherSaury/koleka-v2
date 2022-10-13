@@ -90,9 +90,31 @@
 }
 #mythPage .comment-section .comment-display-container .comment{
     /* background-color: rgb(228, 216, 216); */
+    margin-top: 2%;
     width: 100%;
     height: auto;
-    
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+#mythPage .comment-section .comment-display-container .comment .com-action{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+#mythPage .comment-section .comment-display-container .comment .com-action a[data-reply]{
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    font-weight: bold;
+}
+#mythPage .comment-section .comment-display-container .comment .com-action a[data-reply]:hover{
+    background-color: #d4d2d2;
+}
+#mythPage .comment-section .comment-display-container .comment .com-action i{
+    font-size: 20px;
+    cursor: pointer;
 }
 #mythPage .comment-section .comment-display-container .comment p{
     margin-bottom: 0;
@@ -102,7 +124,7 @@
     font-weight: 500;
 }
 #mythPage .comment-section .comment-display-container .comment .replies{
-    margin-left :20px;
+    margin-left :40px;
 }
 #mythPage .comment-section .comment-display-container .replies .comment{
     margin-top: 20px;
