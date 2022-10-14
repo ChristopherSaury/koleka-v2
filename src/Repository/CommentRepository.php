@@ -50,6 +50,17 @@ class CommentRepository extends ServiceEntityRepository
         return $query->getResult();
     }
 
+    public function deleteCom($id){
+        $em = $this->getEntityManager();
+        $queryBuilder = $em->createQueryBuilder();
+        $queryBuilder
+        ->delete()
+        ->from('App\Entity\Comment', 'c')
+        ->where('c.id = :id')
+        ->setParameter(':id', $id);
+        $queryBuilder->getQuery()->execute();
+    }
+
 //    /**
 //     * @return Comment[] Returns an array of Comment objects
 //     */

@@ -3,7 +3,7 @@
     {% for comment in comments %}
         {% if comment.parent is null %}
         <div class="comment">
-            <div class="user"><p class="pseudo">{{ comment.getAuthor().getFirstname() }}  {{ comment.getAuthor().getLastname() }}</p><span class="time">publié le : {{comment.getPublishedAt()|date('d-m-Y')}}</span></div>
+            <div class="user"><p class="pseudo">{{ comment.getAuthor().getFirstname() }}  {{ comment.getAuthor().getLastname() }}</p><span class="time">publié le : {{comment.getPublishedAt()|date('d-m-Y H:i')}}</span></div>
             <div class="userComment"><p>{{ comment.content }}</p></div>
             <div class="com-action">
                 <div class="reply-action">
@@ -20,16 +20,16 @@
                 {% if comment.replies is not null %}
                 {% for reply in comment.replies %}
                 <div class="comment">
-                    <div class="user"><p class="pseudo">{{ reply.getAuthor().getFirstname() }}  {{ reply.getAuthor().getLastname() }}</p><span class="time">publié le : {{comment.getPublishedAt()|date('d-m-Y')}}</span></div>
+                    <div class="user"><p class="pseudo">{{ reply.getAuthor().getFirstname() }}  {{ reply.getAuthor().getLastname() }}</p><span class="time">publié le : {{reply.getPublishedAt()|date('d-m-Y H:i')}}</span></div>
                     <div class="userComment"><p>{{ reply.content }}</p></div>
                     <div class="com-action">
                         <div class="reply-action">
-                            <a style="display: none;" onclick="openReplyModal(this)" data-reply data-id="{{ comment.id }}">Répondre</a>
+                            <a style="display: none;" onclick="openReplyModal(this)" data-reply data-id="{{ reply.id }}">Répondre</a>
                         </div>
                         <div class="com-user-action">
                             {% if app.user.userIdentifier is defined and app.user.userIdentifier == reply.author.email %}
-                            <a onclick="retrieveComment(this)" data-update data-id="{{ comment.id }}" title="modifier"><i class="fas fa-edit"></i></a>
-                            <a onclick="deleteCom(this)" data-id="{{comment.id}}" title="supprimer"><i class="fas fa-trash"></i></a>
+                            <a onclick="retrieveComment(this)" data-update data-id="{{ reply.id }}" title="modifier"><i class="fas fa-edit"></i></a>
+                            <a onclick="deleteCom(this)" data-id="{{reply.id}}" title="supprimer"><i class="fas fa-trash"></i></a>
                             {% endif %}
                         </div>
                     </div>

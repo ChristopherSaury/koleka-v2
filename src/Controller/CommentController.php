@@ -95,15 +95,13 @@ class CommentController extends AbstractController{
 
     #[Route('/commentaire/supprimer/{id}', name:'supprimer_commentaire')]
     #[IsGranted('ROLE_USER')]
-    public function deleteComment(Comment $comment , EntityManagerInterface $em){
-        if($comment){
-            $em->remove($comment);
-            $em->flush();
-
+    public function deleteComment(  $id ,CommentRepository $repo){
+        if($id){
+            $repo->deleteCom($id);
+    
             return new Response(200);
         }else{
             return new Response(404);
         }
-        
     }
 }
