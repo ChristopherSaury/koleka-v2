@@ -2,11 +2,8 @@
 
 namespace App\Form;
 
-use App\Entity\User;
-use DateTimeImmutable;
 use App\Entity\Article;
 use App\Entity\Country;
-use DateTime;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -22,14 +19,10 @@ class ArticleType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $date = new DateTime();
         $builder
             ->add('title', TextType::class,[
                 'label' => 'Titre :',
                 'attr' => ['placeholder' => 'Titre de la légende']
-            ])
-            ->add('published_at', HiddenType::class,[
-                'data' => $date->format('Y-m-d H:i:s')
             ])
             ->add('country', EntityType::class,[
                 'class' => Country::class,
@@ -47,7 +40,7 @@ class ArticleType extends AbstractType
                 'attr' => ['placeholder' => 'Contenu de la légende']
             ])
             ->add('submit', SubmitType::class,[
-                'label' => 'Envoyer'
+                'label' => 'Terminer'
             ])
         ;
     }

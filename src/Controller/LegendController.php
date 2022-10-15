@@ -6,6 +6,7 @@ use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use App\Repository\CountryRepository;
+use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
@@ -43,6 +44,7 @@ class LegendController extends AbstractController{
     public function insertLegend(EntityManagerInterface $em, Request $request , SluggerInterface $slugger){
         $new_article = new Article;
         $new_article->setAuthor($this->getUser());
+        $new_article->setPublishedAt(new DateTime());
         $form = $this->createForm(ArticleType::class, $new_article);
         $form->handleRequest($request);
 

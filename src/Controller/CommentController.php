@@ -27,7 +27,7 @@ class CommentController extends AbstractController{
     }
     #[Route('/commentaire/ajouter/{id}', name:'ajouter_com')]
     #[IsGranted('ROLE_USER')]
-    public function addComment($id, EntityManagerInterface $em, CommentRepository $comment, ArticleRepository $article){
+    public function addComment($id, EntityManagerInterface $em, ArticleRepository $article){
         if(!empty($_POST['comment-input'])){
             
             $new_comment = new Comment;
