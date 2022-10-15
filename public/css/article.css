@@ -76,6 +76,17 @@
 #mythPage .comment-section .form-container button:hover{
     background-color: rgb(67, 65, 65);
 }
+#mythPage .comment-section .form-container .btn-login{
+    background-color: #222;
+    color: #fff;
+    float: right;
+    margin-top: 10px;
+    border-radius: 0;
+    padding: 1%;
+}
+#mythPage .comment-section .form-container .btn-login:hover{
+    background-color: rgb(67, 65, 65);
+}
 #mythPage .comment-section .comment-display-container{
     margin-top: 10px;
 }
