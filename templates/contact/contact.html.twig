@@ -3,6 +3,10 @@
 {% block title %}Association culturelle Koleka - Contact{% endblock %}
 {% block stylesheets %}<link rel="stylesheet" href="{{asset('css/contact.css')}}">{% endblock %}
 
+{% block javascripts %}
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+{% endblock %}
+
 {% block body %}
 <section id="contact">
     <div class="map">
@@ -43,7 +47,7 @@
             </div>
 
         </div>
-        <form method="POST" action="#" id="koleka-contact" class="info-ct">
+        <form method="POST" action="{{path('envoyer_msg')}}" id="koleka-contact" class="info-ct">
             <h2>Contactez-nous</h2>
             <div class="line">
                 <div class="lastname">
@@ -57,7 +61,7 @@
             </div>
             <div class="mail">
                 <label for="email_id">Email</label>
-                <input type="email" name="mail" id="email_id">
+                <input type="email" name="email_id" id="email_id">
             </div>
             <div class="subject">
                 <label for="subject">Sujet</label>
@@ -67,6 +71,7 @@
                 <label for="message">Message</label>
                 <textarea name="message" id="message" cols="30" rows="10"></textarea>
             </div>
+            <div class="g-recaptcha"data-sitekey="6LfB_oQiAAAAANoau9ii1eAkX8rrpHCSKCIbxXqE"></div>
             <div class="btn-wrapper">
                 <button type="submit">Envoyer</button>
             </div>
