@@ -10,10 +10,8 @@ use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Serializer\SerializerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommentController extends AbstractController{
@@ -33,7 +31,7 @@ class CommentController extends AbstractController{
             $new_comment = new Comment;
             
             $new_comment->setParent(null);
-            $new_comment->setContent($_POST['comment-input']);
+            $new_comment->setContent(htmlspecialchars($_POST['comment-input']));
             $new_comment->setAuthor($this->getUser());
             $new_comment->setPublishedAt(new DateTime());
             $new_comment->setArticle($article->find($id));
@@ -54,7 +52,7 @@ class CommentController extends AbstractController{
             $new_comment = new Comment;
             
             $new_comment->setParent($comment->find($_POST['comment_parentid']));
-            $new_comment->setContent($_POST['reply-input']);
+            $new_comment->setContent(htmlspecialchars($_POST['reply-input']));
             $new_comment->setAuthor($this->getUser());
             $new_comment->setPublishedAt(new DateTime());
             $new_comment->setArticle($article->find($id));
@@ -84,7 +82,7 @@ class CommentController extends AbstractController{
     #[IsGranted('ROLE_USER')]
     public function updateCommentHandler(EntityManagerInterface $em, Comment $comment){
         if(!empty($_POST['update-input'])){
-            $comment->setContent($_POST['update-input']);
+            $comment->setContent(htmlspecialchars($_POST['update-input']));
             $em->persist($comment);
             $em->flush();
 

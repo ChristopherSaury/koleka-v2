@@ -47,6 +47,9 @@ class RegistrationController extends AbstractController
         }elseif($_GET['plainPassword'] !== $_GET['cf-psw']){
             $this->addFlash('error', 'Le mot de passe et sa confirmation doivent être identiques');
             return $this->redirectToRoute('app_register');
+        }elseif(strlen($_GET['plainPassword']) < 7 || strlen($_GET['plainPassword']) > 30 ){
+            $this->addFlash('error', 'Le mot de passe doit contenir entre 8 et 30 caractères');
+            return $this->redirectToRoute('app_register');
         }elseif(!isset($_GET['agreeTerms'])){
             $this->addFlash('error', 'Vous devez accepter les termes et conditions d\'utilisation');
             return $this->redirectToRoute('app_register');
