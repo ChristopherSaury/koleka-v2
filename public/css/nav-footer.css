@@ -236,8 +236,11 @@ footer .icon-btn{
 footer .credit{
     margin-top: 10%;
     text-align: center;
+    font-size: 18px;
 }
-
+footer .credit a{
+font-size: 17px;
+}
 /************** NEWSLETTER ************************/
 .nsl-section{
     padding: 5% 0;

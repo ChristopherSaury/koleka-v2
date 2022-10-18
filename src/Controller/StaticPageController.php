@@ -28,4 +28,9 @@ class StaticPageController extends AbstractController{
             return $this->redirectToRoute('accueil');
         }
     }
+
+    #[Route('/crédits', name:'credits')]
+    public function credits(){
+        return $this->render('static/credits.html.twig');
+    }
 }

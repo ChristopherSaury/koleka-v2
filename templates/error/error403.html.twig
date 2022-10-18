@@ -1,0 +1,36 @@
+{% extends 'base-error.html.twig' %}
+
+{% block title%}Accès refusé{% endblock %}
+
+{% block style %}
+    <style>
+        #error{
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 80px;
+            background: url('{{asset("img/error/403.jpg")}}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #error a{
+            background-color: #222;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        #error a:hover{
+            background-color: rgb(67, 65, 65);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="error">
+        <a href="{{path('accueil')}}">Retourner vers le site</a>
+    </section>
+
+{% endblock %}

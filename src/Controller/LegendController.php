@@ -32,6 +32,9 @@ class LegendController extends AbstractController{
     #[Route("/legende/pays/{id}", name:"un_pays")]
     public function displayCountryPage($id, CountryRepository $country, ArticleRepository $article){
         $one_country = $country->find($id);
+        if(!$one_country){
+            return $this->redirectToRoute('error_404');
+        }
         return $this->render('legend/country.html.twig',[
             'controller_name'=> 'LegendController',
             'country' => $one_country,
@@ -82,16 +85,21 @@ class LegendController extends AbstractController{
     #[Route("/legende/articles/user/{id}", name:"mes_articles")]
     #[IsGranted('ROLE_USER')]
     public function userArticle($id, ArticleRepository $article){
-        //if($this->getUser()->getId() != $id) dd("error 403");
+        if($this->getUser()->getId() != $id){
+            return $this->redirectToRoute('error_403');
+        } 
         return $this->render('legend/user-article.html.twig',[
             'user_articles' => $article->getUserArticle($id)
         ]);
     }
     #[Route("legende/article/{id}", name:"article")]
     public function displayArticle($id, ArticleRepository $article){
-        //dd( $article->find($id));
+        $legend = $article->find($id);
+        if(!$legend){
+            return $this->redirectToRoute('error_404');
+        }
         return $this->render('legend/article.html.twig',[
-            'legend' => $article->find($id)
+            'legend' => $legend
         ]);
     }
 
@@ -115,7 +123,7 @@ class LegendController extends AbstractController{
                         $newFilename
                     );
                 } catch (FileException $e){
-                    dd($e);
+                    return $this->redirectToRoute('error_500');
                 }
                 $previous_image = basename($article->getIllustration());
                 unlink($this->getParameter('kernel.project_dir') . '/public/uploads/' . $previous_image);
@@ -135,7 +143,7 @@ class LegendController extends AbstractController{
     #[Route("/legende/supprimer/{id}", name:"supprimer_article")]
     #[IsGranted("ROLE_USER")]
     public function deleteArticle( Article $article ,EntityManagerInterface $em){
-
+        
         if($article->getIllustration()){
             $illustration = basename($article->getIllustration());
             unlink($this->getParameter('kernel.project_dir') . '/public/uploads/' . $illustration);

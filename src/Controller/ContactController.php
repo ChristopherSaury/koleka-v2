@@ -51,7 +51,7 @@ class ContactController extends AbstractController{
                 } 
                  
         }
-        return $this->redirectToRoute('accueil');
+        return $this->redirectToRoute('error_500');
         
     }
 }

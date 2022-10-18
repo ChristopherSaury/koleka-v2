@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title%}Association culturelle Koleka - Crédits{% endblock %}
+{% block style %}
+    <style>
+        #credits{
+            width: 100%;
+            min-height: 100vh;
+            padding-top: 80px;
+        }
+        #credits div{
+            width: 100%;
+            height: auto;
+        }
+        #credits .credits-container{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 5%;
+        }
+    </style>
+{% endblock %}
+
+
+{% block body %}
+    <section id="credits">
+        <div class="container">
+            <div class="row">
+                <h1 class="text-center">Association culturelle Koleka - Crédits</h1>
+                <div class="col-lg credits-container">
+                    <p>Pages erreur :<a href="http://www.freepik.com">Designed by stories / Freepik</a></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block js %} 
+    <script>
+        let userNavContact = document.querySelector("#desktop .user-nav");
+        let creditsPage = document.querySelector("#credits");
+
+        if(userNavContact){
+            creditsPage.style.paddingTop = '110px';
+        }else{
+            creditsPage.style.paddingTop = '80px';
+        }
+    </script> 
+{% endblock %}
