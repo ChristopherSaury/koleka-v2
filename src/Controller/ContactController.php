@@ -17,8 +17,11 @@ class ContactController extends AbstractController{
     }
     #[Route('/contact/message/envoyer', name:'envoyer_msg')]
     public function sendMail(MailerInterface $mailer){
-        if(!empty($_POST['firstname']) && !empty($_POST['lastname']) && !empty($_POST['email_id'])
-            && !empty($_POST['subject']) && !empty($_POST['message'])){
+        if(empty($_POST['firstname']) || empty($_POST['lastname']) || empty($_POST['email_id'])
+        || empty($_POST['subject']) || empty($_POST['message'])){
+            $this->addFlash('error', 'Vous devez remplir tout les champs');
+            return $this->redirectToRoute('contact');
+        }else{
 
                 $contact_message = (new Email())
                 ->from($_POST['email_id'])
@@ -40,9 +43,11 @@ class ContactController extends AbstractController{
 
                 if ($response->success == true) {
                     $mailer->send($contact_message);
+                    $this->addFlash('success', 'Message envoyé');
                     return $this->redirectToRoute('contact');
                 } else {
-                    dd('captcha pas vérifié');
+                    $this->addFlash('error', 'Vous devez cocher la captcha');
+                    return $this->redirectToRoute('contact');
                 } 
                  
         }

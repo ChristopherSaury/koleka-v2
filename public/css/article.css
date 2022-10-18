@@ -51,6 +51,9 @@
     padding: 0 15%;
 }
 /************************ COMMENT SECTION ********************************/
+#mythPage #message{
+    display: none;
+}
 #mythPage .comment-section {
     width: 100%;
     height: auto;

@@ -21,7 +21,10 @@
 
 {% block body %}
 <section id="signup">
-    <form action="{{path('app_register')}}">
+    <form action="{{path('register_handler')}}">
+            {% for error in app.flashes('error') %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
         <h2>Inscription</h2>
         <div class="first-row">
             <div class="lastname-input">

@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use App\Security\LoginAuthenticator;
@@ -28,13 +27,31 @@ class RegistrationController extends AbstractController
         $this->emailVerifier = $emailVerifier;
     }
     #[Route('/inscription', name:'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
+    public function register(): Response
     {
-         if(!empty($_GET['firstname']) && !empty($_GET['lastname'])
-          && !empty($_GET['email']) && !empty($_GET['plainPassword'])
-          && !empty($_GET['cf-psw']) && !empty($_GET['agreeTerms'])
-          && $_GET['plainPassword'] === $_GET['cf-psw'])
-        {
+       
+        return $this->render('registration/signup.html.twig',[
+            'controller_name' => 'RegistrationController'
+        ]);
+    }
+
+    #[Route('/inscription/handler', name:'register_handler')]
+    public function register_handler(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager){
+        if(empty($_GET['firstname']) || empty($_GET['lastname']) || empty($_GET['email'])
+        || empty($_GET['plainPassword']) || empty($_GET['cf-psw'])){
+            $this->addFlash('error', 'Vous devez remplir tous les champs du formulaire');
+            return $this->redirectToRoute('app_register');
+        }elseif(!preg_match('/^[a-zA-Z]+$/',$_GET['firstname']) || !preg_match('/^[a-zA-Z]+$/',$_GET['lastname'])){
+            $this->addFlash('error', 'les champs nom et prénom doivent contenir des lettres uniquement');
+            return $this->redirectToRoute('app_register');
+        }elseif($_GET['plainPassword'] !== $_GET['cf-psw']){
+            $this->addFlash('error', 'Le mot de passe et sa confirmation doivent être identiques');
+            return $this->redirectToRoute('app_register');
+        }elseif(!isset($_GET['agreeTerms'])){
+            $this->addFlash('error', 'Vous devez accepter les termes et conditions d\'utilisation');
+            return $this->redirectToRoute('app_register');
+        }else{
+            
             $user = new User;
             $user->setFirstname($_GET['firstname']);
             $user->setLastname($_GET['lastname']);
@@ -66,52 +83,8 @@ class RegistrationController extends AbstractController
                 $request
             );
         }
-        return $this->render('registration/signup.html.twig',[
-            'controller_name' => 'RegistrationController'
-        ]);
+        return $this->redirectToRoute('accueil');
     }
-
-    // #[Route('/inscription', name: 'app_register')]
-    // public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager): Response
-    // {
-    //     $user = new User();
-    //     $form = $this->createForm(RegistrationFormType::class, $user);
-    //     $form->handleRequest($request);
-
-    //     if ($form->isSubmitted() && $form->isValid()) {
-    //         // encode the plain password
-    //         $user->setPassword(
-    //             $userPasswordHasher->hashPassword(
-    //                 $user,
-    //                 $form->get('plainPassword')->getData()
-    //             )
-    //         );
-
-    //         $entityManager->persist($user);
-    //         $entityManager->flush();
-
-    //         // generate a signed url and email it to the user
-    //         $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-    //             (new TemplatedEmail())
-    //                 ->from(new Address('legendkoleka@gmail.com', 'Team Koleka'))
-    //                 ->to($user->getEmail())
-    //                 ->subject('Please Confirm your Email')
-    //                 ->htmlTemplate('registration/confirmation_email.html.twig')
-    //         );
-    //         // do anything else you need here, like send an email
-
-    //         return $userAuthenticator->authenticateUser(
-    //             $user,
-    //             $authenticator,
-    //             $request
-    //         );
-    //     }
-
-    //     return $this->render('registration/register.html.twig', [
-    //         'registrationForm' => $form->createView(),
-    //     ]);
-    // }
-
     #[Route('/verify/email', name: 'app_verify_email')]
     public function verifyUserEmail(Request $request, TranslatorInterface $translator, UserRepository $userRepository): Response
     {

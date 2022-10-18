@@ -49,6 +49,12 @@
         </div>
         <form method="POST" action="{{path('envoyer_msg')}}" id="koleka-contact" class="info-ct">
             <h2>Contactez-nous</h2>
+            {% for error in app.flashes('error') %}
+                <div class="alert alert-danger">{{ error }}</div>
+            {% endfor %}
+            {% for success in app.flashes('success') %}
+                <div class="alert alert-success">{{ success }}</div>
+            {% endfor %}
             <div class="line">
                 <div class="lastname">
                     <label for="lastname">Nom</label>
@@ -75,7 +81,6 @@
             <div class="btn-wrapper">
                 <button type="submit">Envoyer</button>
             </div>
-            <p id="my-form-status"></p>
         </form>
     </div>
 </section>

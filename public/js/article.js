@@ -33,8 +33,6 @@ function closeModalUpdate(){
 
 }
 async function retrieveComment(element){
-    // fetch('/commentaire/modifier/' + element.dataset.id)
-    // .then((res) => res.json()).then((data) => console.log(data))
     const response = await fetch('/commentaire/modifier/' + element.dataset.id);
     let data = await response.json();
     if(response){
@@ -45,7 +43,6 @@ async function retrieveComment(element){
 }
 
 function saveUpdatedComment(){
-    console.log(document.getElementsByClassName('data_update'));
     let form_element = document.getElementsByClassName('data_update');
     let form_data = new FormData();
 
@@ -77,15 +74,12 @@ function displayComment(){
 }
 
 function save_data(){
-    console.log('/commentaire/ajouter/' + document.querySelector('#mythPage .lg').id)
     let form_element = document.getElementsByClassName('form_data');
-    //let form_element = document.querySelector('#mythPage #cmt-form #comment-input');
     let form_data = new FormData();
 
     for( let count = 0; count < form_element.length; count++){
         form_data.append(form_element[count].name , form_element[count].value);
     }
-    //form_data.append(form_element.name , form_element.value);
     document.querySelector('#mythPage #cmt-form #submit').disabled = true;
 
     const xhttp = new XMLHttpRequest();
@@ -97,10 +91,10 @@ function save_data(){
             document.querySelector('#mythPage #cmt-form #submit').disabled = false;
             document.querySelector('#mythPage #cmt-form').reset();
 
-            document.getElementById('message').innerHTML = xhttp.responseText;
+            document.getElementById('message').style.display = 'initial';
 
             setTimeout(function(){
-                document.getElementById('message').innerHTML = '';
+                document.getElementById('message').style.display = 'none';
             }, 2000)
         }
     }

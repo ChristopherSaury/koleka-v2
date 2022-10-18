@@ -62,6 +62,7 @@ class CommentController extends AbstractController{
             $em->persist($new_comment);
             $em->flush();
 
+            $this->addFlash('success', 'Commentaire ajouté');
             return new Response(200);
         }else{
             return new Response(500);
