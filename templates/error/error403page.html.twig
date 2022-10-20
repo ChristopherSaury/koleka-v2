@@ -1,19 +1,21 @@
 {% extends 'base-error.html.twig' %}
 
-{% block title%}Erreur 500{% endblock %}
+{% block title%}Accès refusé{% endblock %}
 
 {% block style %}
     <style>
         #error{
             width: 100%;
             min-height: 100vh;
-            padding-top: 80px;
-            background: url('{{asset("img/error/500.jpg")}}');
+            padding-top: 10px;
+            background: url('{{asset("img/error/403.jpg")}}');
             background-size: contain;
             background-repeat: no-repeat;
             display: flex;
-            align-items: center;
-            justify-content: center;
+            flex-direction: column;
+        }
+        #error h1{
+            margin: 0;
         }
         #error a{
             background-color: #222;
@@ -21,6 +23,8 @@
             padding: 10px 20px;
             text-decoration: none;
             font-size: 20px;
+            width: 200px;
+            height: auto;
         }
         #error a:hover{
             background-color: rgb(67, 65, 65);
@@ -30,6 +34,8 @@
 
 {% block body %}
     <section id="error">
+        <h1>Accès interdit</h1>
+        <p>Vous n'avez pas la permission d'accéder à cette page</p>
         <a href="{{path('accueil')}}">Retourner vers le site</a>
     </section>
 

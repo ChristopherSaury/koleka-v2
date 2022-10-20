@@ -1,0 +1,50 @@
+{% extends 'base-error.html.twig' %}
+
+{% block title%}Erreur 500{% endblock %}
+
+{% block style %}
+    <style>
+        #error{
+            width: 100%;
+            min-height: 100vh;
+            background: url('{{asset("img/error/500.jpg")}}');
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        #error div{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #error h1{
+            margin: 0 0 2px 0;
+        }
+        #error a{
+            background-color: #222;
+            color: #fff;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 20px;
+            width: 200px;
+            height: auto;
+        }
+        #error a:hover{
+            background-color: rgb(67, 65, 65);
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="error">
+        <div>
+            <h1>Problème serveur</h1>
+            <p>Le serveur n'a pas pu exécuter la requête pour des raisons inconnues</p>
+            <a href="{{path('accueil')}}">Retourner vers le site</a>
+        </div>
+    </section>
+
+{% endblock %}
