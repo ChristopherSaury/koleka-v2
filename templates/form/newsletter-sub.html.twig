@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Newsletter{% endblock %}
+{% block style %}
+    <style>
+        #nsl-section{
+            width: 100%;
+            min-height: 130vh;
+            margin-top: 80px;
+            display: flex;
+            justify-content: center;
+            background: url('{{asset("img/nsl-wallpaper.jpg")}}');
+            background-size: cover;
+        }
+        #nsl-section .nsl-form-container{
+            margin: 8% 0 14% 0;
+            background-color: #fff;
+            width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        #nsl-section .nsl-form-container h3{
+            padding: 50px 50px 5px 50px;
+        }
+        #nsl-section .nsl-form-container p{
+            padding: 0 50px 10px 50px;
+        }
+        #nsl-section form{
+            width: 100%;
+            height: 100%;
+            padding: 0 50px 50px 50px;
+        }
+        #nsl-section form button{
+            padding: 10px 30px;
+            background-color: #222;
+            color: #fff;
+            text-decoration: none;
+            font-family: 'Cabin Condensed', sans-serif;
+            font-size: 14px;
+            letter-spacing: 1px;
+            border-radius: 1px;
+            border: none;
+            cursor: pointer;
+            float: right;
+        }
+        #nsl-section form button:hover{
+            background-color: rgb(70, 68, 68);
+        }
+        #nsl-section form input{
+            border-radius: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section id="nsl-section">
+        <div class="nsl-form-container">
+            <h3 class="text-center">Nos dernières actualité</h3>
+            <p class="text-center">Recevez du contenu exclusif en vous abonnant à la newsletter</p>
+            {% for success in app.flashes('success') %}
+                <div class="alert alert-success">{{ success }}</div>
+            {% endfor %}
+            {{form(nslForm)}}
+        </div>
+</section>
+{% endblock %}
+{% block js %} 
+    <script>
+        let userNavNsl = document.querySelector("#desktop .user-nav");
+        let nslPage = document.querySelector("#nsl-section");
+
+        if(userNavNsl){
+            nslPage.style.paddingTop = '110px';
+        }else{
+            nslPage.style.paddingTop = '80px';
+        }
+    </script> 
+{% endblock %}

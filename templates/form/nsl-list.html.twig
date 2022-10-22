@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Newsletter liste{% endblock %}
+{% block style %}
+    <style>
+        #nsl-list{
+            width: 100%;
+            min-height: 120vh;
+            margin-top: 80px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="nsl-list">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg">
+                    <h1 class="text-center">Liste Newsletter</h1>
+                    <table class="table table-success table-striped">
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre</th>
+                            <th>Pièce jointe</th>
+                            <th>Date</th>
+                            <th>Status</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                            <th>Envoi</th>
+                        </tr>
+                        {% for newsletter in newsletters %}
+                        <tr>
+                            <td>{{ newsletter.id }}</td>
+                            <td>{{ newsletter.title }}</td>
+                            {% if newsletter.attachment is null %}
+                            <td>Aucune</td>
+                            {% else %}
+                            <td>{{ newsletter.attachment }}</td>
+                            {% endif %}
+                            <td>{{ newsletter.getDate()|date('m-Y') }}</td>
+                            {% if newsletter.isIsSent() == 0 %}
+                            <td>Non envoyé</td>
+                            {% else %}
+                            <td>Envoyé</td>
+                            {% endif %}
+
+                            <td><a href="#" type="button" class="btn btn-light">Modifier</a></td>
+                            <td><a href="{{path('newsletter_delete', {id: newsletter.id})}}" type="button" class="btn btn-danger">Supprimer</a></td>
+                            <td><a href="{{path('newsletter_send', {id: newsletter.id })}}" type="button" class="btn btn-info">Envoyer</a></td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %} 
+    <script>
+        let userNavNsl = document.querySelector("#desktop .user-nav");
+        let nslPage = document.querySelector("#nsl-list");
+
+        if(userNavNsl){
+            nslPage.style.marginTop = '110px';
+        }else{
+            nslPage.style.marginTop = '80px';
+        }
+    </script> 
+{% endblock %}

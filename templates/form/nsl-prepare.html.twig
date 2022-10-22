@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Créer Newsletter{% endblock %}
+{% block style %}
+    <style>
+       #nsl-create{
+            width: 100%;
+            min-height: 120vh;
+            padding-top: 110px;
+        }
+        #nsl-create .container{
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #nsl-create .container .row{
+            width: 800px;
+            height: auto;
+        }
+        #nsl-create .container form textarea{
+            height: 300px;
+            padding: 2%;
+            resize: none;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="nsl-create">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg">
+                    <h1 class="text-center">Créer Newsletter</h1>
+                    {{form(nslCreate)}}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %} 
+    <!-- <script>
+        let userNavNsl = document.querySelector("#desktop .user-nav");
+        let nslPage = document.querySelector("#nsl-section");
+
+        if(userNavNsl){
+            nslPage.style.paddingTop = '110px';
+        }else{
+            nslPage.style.paddingTop = '80px';
+        }
+    </script>  -->
+{% endblock %}
