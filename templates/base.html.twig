@@ -59,17 +59,29 @@
             </nav>
             <nav id="mobile-nav">
                 <div class="logo-mobile">
-                    <a href="./index.html">
+                    <a href="{{path('accueil')}}">
                         <img class="logo-mb" src="{{asset('img/logo.png')}}" alt="Association culturelle Koleka logo">
                     </a>
                 </div>
-                    <i class="fas fa-bars" onclick="toggleMobileMenu(this)"></i>
+                <i class="fas fa-bars" onclick="toggleMobileMenu(this)"></i>
                 <ul class="mobile-list closed-menu">
                     <li><a href="{{path('accueil')}}" class="mobile-link">Accueil</a></li>
                     <li><a href="{{path('legende')}}" class="mobile-link">Legende</a></li>
                     <li><a href="{{path('a-propos')}}" class="mobile-link">A propos</a></li>
                     <li><a href="{{path('app_register')}}" class="mobile-link">inscription</a></li>
                     <li><a href="{{path('contact')}}" class="mobile-link">Contact</a></li>
+
+                    {% if app.user.userIdentifier is defined %}
+                    <li onclick="toggleUserMobileNav(this)" class="user-toggle"><span>menu utilisateur<img id="user-arrow" style="width: 30px ; height: 30px; padding-left: 2px;" src="{{asset('img/arrow.svg')}}" alt="arrow"></span></li>
+                    {% if is_granted('ROLE_ADMIN') %}
+                    <li class="user-mobile-link closed-user-mobile"><a href="{{path('newsletter_prepare')}}">Créer Newsletter</a></li>
+                    <li class="user-mobile-link closed-user-mobile"><a href="{{path('newsletter_list')}}">Newsletter Liste</a></li>
+                    {% endif %}
+                    <li class="user-mobile-link closed-user-mobile"><a href="{{path('legende_creer')}}">Ajouter un article</a></li>
+                    <li class="user-mobile-link closed-user-mobile"><a href="{{path('mes_articles', {id : app.user.getId})}}">Voir mes articles</a></li>
+                    <li class="user-mobile-link closed-user-mobile"><a href="#">Réglages</a></li>
+                    <li class="user-mobile-link closed-user-mobile"><a href="{{path('app_logout')}}">Déconnexion</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </header>

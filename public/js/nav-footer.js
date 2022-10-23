@@ -13,6 +13,25 @@ const toggleMobileMenu = (element) => {
         element.nextElementSibling.classList.add("open");
     }
 }
+// USER NAVBAR MOBILE
+let userNavMobileBtn = document.querySelector('#mobile-nav .user-toggle');
+let arrowUserMobile = document.querySelector('#mobile-nav .mobile-list #user-arrow')
+let userMobileLink = document.querySelectorAll('#mobile-nav .mobile-list .user-mobile-link');
+console.log(userMobileLink);
+
+const toggleUserMobileNav = (element) =>{
+    if(element.nextElementSibling.classList.contains('closed-user-mobile')){
+        arrowUserMobile.style.transform = "rotate(180deg)";
+        userMobileLink.forEach(element =>{
+            element.classList.remove('closed-user-mobile');
+        })
+    }else if(!element.nextElementSibling.classList.contains('closed-user-mobile')){
+        arrowUserMobile.style.transform = "rotate(0deg)";
+        userMobileLink.forEach(element =>{
+        element.classList.add('closed-user-mobile');
+        })
+    }
+}
 // USER NAVBAR
 let userNav = document.querySelector(".user-menu .user-menu-icon");
 let arrowUser = document.querySelector(".user-menu .user-menu-icon #lg-arrow-user");
@@ -29,8 +48,6 @@ let userNavMenu = document.querySelector(".user-menu .user-config");
             arrowUser.style.transform = "rotate(0deg)";
         }
     }
-
-
 // FOOTER
 const currentYear = new Date().getFullYear();
 let displayedYear = document.querySelector(".year").innerHTML = currentYear;
