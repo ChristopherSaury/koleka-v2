@@ -42,6 +42,14 @@
                 justify-content: center;
             }
         }
+        @media screen and (min-width: 576px) and (max-width: 992px){
+            .medusa,
+            .werewolf,
+            .shadow-people{
+                height: auto;
+                padding: 10% 0%;
+            }
+        }
     </style>
 {% endblock %}
 {% block body %}
@@ -61,7 +69,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta velit possimus,
             fuga illum dolorem blanditiis. Quisquam recusandae, laboriosam facere quibusdam rem esse corrupti obcaecati, delectus doloremque ad possimus aliquam labore!
         </p>
-        <a href="./legendes-liste/medusa.html" class="btn-discovery">
+        <a href="{{path('article', {id: 17})}}" class="btn-discovery">
             Découvrir
         </a>
     </div>

@@ -132,5 +132,25 @@
     .shadow-people-intro{
         width: calc(100% - 10px);
     }
+}
 
+@media screen and (min-width: 576px) and (max-width: 992px){
+    .medusa-intro h2,
+    .werewolf-intro h2,
+    .shadow-people-intro h2{
+        font-size: 45px;
+    }
+    .medusa-intro p,
+    .werewolf-intro p,
+    .shadow-people-intro p{
+        font-size: 14px;
+        width: 100%;
+    }
+    .medusa-intro,
+    .werewolf-intro,
+    .shadow-people-intro{
+        width: 500px;
+        padding: 5% 2% 0 2%;
+        margin-top: 4%;
+    }
 }
