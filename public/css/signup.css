@@ -75,4 +75,19 @@
     padding: 1% 0;
     margin-bottom: 0;
 }
-
+@media screen and (min-width: 280px) and (max-width: 575px){
+    #signup{
+        min-height: 100vh;
+        padding: 4% 0;
+        justify-content: center;
+    }
+    #signup form{
+        margin-right: 0%;
+        width: 80%;
+        margin-top: 0%;
+    }
+    #signup form .first-row{
+        flex-direction: column;
+        gap: 5px;
+    }
+}

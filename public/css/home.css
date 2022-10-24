@@ -28,6 +28,7 @@
 #introduction{
     width: 100%;
     height: auto;
+    padding-top: 80px;
 }
 
 #introduction .btn-discovery{
@@ -122,4 +123,14 @@
     line-height: 30px;
     text-align: center;
     width: 80%;
+}
+
+/************************* RESPONSIVE ***************************/
+@media screen and (min-width: 280px) and (max-width: 575px){
+    .medusa-intro,
+    .werewolf-intro,
+    .shadow-people-intro{
+        width: calc(100% - 10px);
+    }
+
 }

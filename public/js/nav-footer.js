@@ -17,7 +17,6 @@ const toggleMobileMenu = (element) => {
 let userNavMobileBtn = document.querySelector('#mobile-nav .user-toggle');
 let arrowUserMobile = document.querySelector('#mobile-nav .mobile-list #user-arrow')
 let userMobileLink = document.querySelectorAll('#mobile-nav .mobile-list .user-mobile-link');
-console.log(userMobileLink);
 
 const toggleUserMobileNav = (element) =>{
     if(element.nextElementSibling.classList.contains('closed-user-mobile')){

@@ -90,8 +90,8 @@
     <script>
         let userNavContact = document.querySelector("#desktop .user-nav");
         let contactPage = document.querySelector("#contact");
-
-        if(userNavContact){
+        console.log(userNavContact)
+        if(userNavContact && screen.width < 768){
             contactPage.style.paddingTop = '110px';
         }else{
             contactPage.style.paddingTop = '80px';

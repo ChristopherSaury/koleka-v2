@@ -134,3 +134,16 @@
     gap: 40px;
     justify-content: center;
 }
+
+@media screen and (min-width: 280px) and (max-width: 575px){
+    #about .koleka-intro{
+        flex-direction: column;
+        padding: 4%;
+    }
+    #about .team-section{
+        padding: 8% 0 12% 0;
+    }
+    #about .abt-card-container{
+        margin-bottom: 6%;
+    }
+}
