@@ -1,30 +1,74 @@
 {% extends 'base.html.twig' %}
 
 {% block title %}Association culturelle Koleka - Mes Légendes{% endblock %}
-{% block stylesheets %} <link rel="stylesheet" href="{{asset('css/user-article.css')}}"> {% endblock %}
+{% block style %} 
+    <style>
+        #user-article{
+            width: 100%;
+            height: auto;
+            padding-top: 110px;
+        }
+        #user-article .container{
+            width: 100%;
+            min-height: 120vh;
+        }
+
+        @media screen and (max-width: 700px) {
+            #user-article .table thead{
+                display: none;
+            }
+            #user-article .table tr{
+                display: block;
+                margin-bottom: 40px;
+            }
+            #user-article .table td {
+                display: block;
+                text-align: right;
+            }
+            #user-article .table td:before {
+                content: attr(data-label);
+                float: left;
+                font-weight: bold;
+            } 
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
     <section id="user-article">
         <div class="container">
             <div class="row">
                 <h2 class="text-center">Mes articles</h2>
-                {% for legend in user_articles %}
-                <div class="card m-2" style="width: 18rem; height: 400px;">
-                    {% if legend.illustration is not null %}
-                    <img style="height: 11rem;" src="{{asset('uploads/')}}{{ legend.illustration }}" class="card-img-top" alt="image de couverture {{legend.title}}">
-                    {% elseif legend.illustration is null %}
-                    <img style="height: 11rem;" src="{{asset('img/avatar.png')}}" class="card-img-top" alt="placeholder image de couverture">
-                    {% endif %}
-                    <div class="card-body">
-                      <h5 class="card-title text-center">{{legend.title}}</h5>
-                      <p class="card-text">{{ legend.content|slice(0, 100) }}...</p>
-                      {% if app.user.userIdentifier is defined  and app.user.userIdentifier == legend.author.email%}
-                      <a href="{{path('modifier_article', {id: legend.id})}}" class="btn btn-primary">Modifier</a>
-                      <a onclick="confirm('Voulez-vous vraiment supprimer cet article ?')" href="{{path('supprimer_article', {id: legend.id})}}" class="btn btn-danger">Supprimer</a>
-                      {% endif %}
-                    </div>
-                  </div>
-                {% endfor %}
+                <table class="table table-success table-striped mt-5">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Titre</th>
+                            <th>Date</th>
+                            <th>illustration</th>
+                            <th>Consulter</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for legend in user_articles %}
+                        <tr>
+                            <td data-label="ID">{{ legend.id }}</td>
+                            <td data-label="Titre">{{ legend.title }}</td>
+                            <td data-label="Date">{{ legend.getPublishedAt()|date('d/m/Y') }}</td>
+                            {% if legend.illustration is null %}
+                            <td data-label="Image">aucune</td>
+                            {% else %}
+                            <td data-label="Image">{{ legend.illustration }}</td>
+                            {% endif %}
+                            <td data-label="Consulter"><a href="{{path('article', {id: legend.id})}}" class="btn btn-primary">Voir</a></td>
+                            <td data-label="Modifier"><a href="{{path('modifier_article', {id: legend.id})}}" class="btn btn-info">Modifier</a></td>
+                            <td data-label="Supprimer"><a href="{{path('supprimer_article', {id: legend.id})}}" class="btn btn-danger">Supprimer</a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
             </div>
         </div>
     </section>

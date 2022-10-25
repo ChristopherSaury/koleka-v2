@@ -25,6 +25,9 @@ class Country
     #[ORM\OneToMany(mappedBy: 'country', targetEntity: Article::class, orphanRemoval: true)]
     private Collection $articles;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $flag = null;
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
@@ -85,6 +88,18 @@ class Country
                 $article->setCountry(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFlag(): ?string
+    {
+        return $this->flag;
+    }
+
+    public function setFlag(?string $flag): self
+    {
+        $this->flag = $flag;
 
         return $this;
     }
