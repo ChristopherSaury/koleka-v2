@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Association culturelle Koleka - Paramètres {% endblock %}
+
+{% block style %}
+    <style>
+        #param{
+            width: 100%;
+            min-height: 140vh;
+            margin-top: 110px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="param">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-md">
+                    <h1 class="text-center">Paramètres</h1>
+                    <ul class="param-list mt-4">
+                        <li><a href="{{path('account_management')}}">Gestion du compte</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -38,7 +38,8 @@ class NewsletterType extends AbstractType
             ->add('term_of_use', CheckboxType::class, [
                 'mapped' => true,
                 'required' => true,
-                'label' => 'J\'accepte les termes et conditions d\'utilisation des données'
+                'label' => 'J\'accepte les termes et <a href="/CGU/CGU.pdf" target="_blank">conditions d\'utilisation des données </a>',
+                'label_html' => true
             ])
             ->add('Rejoindre', SubmitType::class)
         ;

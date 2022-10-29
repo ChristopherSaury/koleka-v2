@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Association culturelle Koleka - Gestion du compte {% endblock %}
+
+{% block style %}
+    <style>
+        #param-account{
+            width: 100%;
+            min-height: 140vh;
+            margin-top: 110px;
+        }
+        #param-account #delete-account{
+            color: red;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #param-account #delete-modal{
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            background-color: rgba(0, 0, 0, 0.92);
+            z-index: 999;
+            display: none;
+            place-items: center;
+        }
+        #param-account #delete-modal i{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            cursor: pointer;
+        }
+        #param-account #delete-modal .warning{
+            width: 600px;
+            height: 250px;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 0 4%;
+        }
+        #param-account #delete-modal .warning p{
+            margin-bottom: 5%;
+        }
+        #param-account #delete-modal .warning .btn-modal-wrapper{
+            display: flex;
+            flex-direction: row;
+            gap: 10%;
+            justify-content: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="param-account">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-md">
+                    <h1 class="text-center">Gestion du compte</h1>
+                    <ul class="param-list mt-4">
+                        <li><a onclick="showDeleteModal()" id="delete-account">Suppression du compte</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div id="delete-modal">
+            <i onclick="closeDeleteModal()" class="fas fa-times"></i>
+            <div class="warning text-danger">
+                <p>Voulez-vous vraiment supprimer votre compte ?
+                    En supprimant votre compte toutes les données en rapport avec celui-ci seront supprimées.
+                </p>
+                <div class="btn-modal-wrapper">
+                    <a href="{{path('delete_acount', {id: app.user.getId})}}" type="button" class="btn btn-danger">Supprimer</a>
+                    <a onclick="closeDeleteModal()" type="button" class="btn btn-primary">Annuler</a>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block js %}
+    <script src="{{ asset('js/account-param.js') }}"></script>
+{% endblock %}
