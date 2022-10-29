@@ -3,7 +3,6 @@
 namespace App\Controller;
 
 use DateTime;
-use App\Entity\Article;
 use App\Entity\Comment;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;

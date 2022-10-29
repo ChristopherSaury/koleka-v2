@@ -19,7 +19,9 @@ class LegendController extends AbstractController{
 
     #[Route("/legende", name:"legende")]
     public function legende(CountryRepository $country){
-        
+        if($this->getUser() == true && $this->getUser()->isVerified() == false){
+            return $this->redirectToRoute('identication_required');
+        }
         return $this->render('legend/legend.html.twig',[
             'controller_name' => 'LegendController',
             'african_countries' => $country->displayAfricanCountry(),

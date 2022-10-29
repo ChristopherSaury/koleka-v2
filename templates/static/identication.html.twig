@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Demande de confirmation{% endblock %}
+
+{% block style %}
+    <style>
+        #confirm{
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #confirm .container .col-lg-md{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #confirm .container .col-lg-md p{
+            font-size: 34px;
+            font-weight: bold;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="confirm">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-md">
+                    <p>
+                        Veuillez confirmer votre adresse email en cliquant sur le lien envoyé sur votre boîte mail.
+                        Si le lien dans le mail est expiré Veuillez contacter l'administrateur à l'adresse : contact@asso-koleka.fr
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

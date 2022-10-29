@@ -42,7 +42,6 @@
                 <table class="table table-success table-striped mt-5">
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>Titre</th>
                             <th>Date</th>
                             <th>illustration</th>
@@ -54,7 +53,6 @@
                     <tbody>
                         {% for legend in user_articles %}
                         <tr>
-                            <td data-label="ID">{{ legend.id }}</td>
                             <td data-label="Titre">{{ legend.title }}</td>
                             <td data-label="Date">{{ legend.getPublishedAt()|date('d/m/Y') }}</td>
                             {% if legend.illustration is null %}
