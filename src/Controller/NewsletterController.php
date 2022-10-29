@@ -18,7 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 
 class NewsletterController extends AbstractController{
-    #[Route('/newsletter', name:'newsletter_list')]
+    #[Route('/admin/newsletter', name:'newsletter_list')]
     #[IsGranted('ROLE_USER')]
     public function newsletterList(NewsletterDocumentRepository $nslRepo){
 
@@ -27,7 +27,7 @@ class NewsletterController extends AbstractController{
         ]);
     }
    
-    #[Route('/newsletter/preparation', name:'newsletter_prepare')]
+    #[Route('/admin/newsletter/preparation', name:'newsletter_prepare')]
     public function nslPrepare(Request $request, EntityManagerInterface $em, SluggerInterface $slugger){
         $new_nsl = new NewsletterDocument;
         $new_nsl->setIsSent(false); 
@@ -65,7 +65,45 @@ class NewsletterController extends AbstractController{
         ]);
     }
 
-    #[Route('/newsletter/envoyer/{id}', name:'newsletter_send')]
+    #[Route('/admin/newsletter/modifier/{id}', name:'newsletter_update')]
+    public function newsletterUpdate(Request $request, NewsletterDocument $nsl_doc, SluggerInterface $slugger, EntityManagerInterface $em){
+        $form = $this->createForm(EditNewsletterType::class, $nsl_doc);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $nsl_attachment = $form->get('attachment')->getData();
+
+            if($nsl_attachment){
+                $originFileName = pathinfo($nsl_attachment->getClientOriginalName(), PATHINFO_FILENAME);
+                $safeFilename = $slugger->slug($originFileName);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $nsl_attachment->guessExtension();
+
+                try{
+                    $nsl_attachment->move(
+                        $this->getParameter('koleka_newsletter'),
+                        $newFilename
+                    );
+                } catch (FileException $e){
+                    return $this->redirectToRoute('error_500');
+                }
+                $previous_doc = basename($nsl_doc->getAttachment());
+                unlink($this->getParameter('kernel.project_dir') . '/public/newsletter-document/' . $previous_doc);
+
+                $nsl_doc->setAttachment($newFilename);
+            }
+
+            $em->persist($nsl_doc);
+            $em->flush();
+
+            return $this->redirectToRoute('newsletter_list');
+    }
+
+    return $this->render('form/nsl-update.html.twig',[
+        'updateForm' => $form->createView()
+    ]);
+}
+
+    #[Route('/admin/newsletter/envoyer/{id}', name:'newsletter_send')]
     public function newsletterSend($id, NewsletterDocumentRepository $nslRepo, NewsletterRepository $sub, MailerInterface $mailer, EntityManagerInterface $em){
         $nsl_to_send = $nslRepo->find($id);
         $subscribers = $sub->findAll();

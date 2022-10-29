@@ -31,6 +31,7 @@ class EditNewsletterType extends AbstractType
                 'label' => 'Pièce jointe : (format : pdf, word ,jpeg, jpg, png)',
                 'required' => false,
                 'multiple' => false,
+                'mapped' => false,
                 'constraints' => [
                     new File([
                         'mimeTypes' => [
@@ -49,7 +50,7 @@ class EditNewsletterType extends AbstractType
                     'placeholder' => 'Contenu de la newsletter'
                 ]
             ])
-            ->add('Envoyer', SubmitType::class)
+            ->add('Ajouter', SubmitType::class)
         ;
     }
 

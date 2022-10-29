@@ -65,7 +65,7 @@
                                 <td data-label="Status">Envoyé</td>
                                 {% endif %}
 
-                                <td data-label="Modifier"><a href="#" type="button" class="btn btn-light">Modifier</a></td>
+                                <td data-label="Modifier"><a href="{{path('newsletter_update', {id: newsletter.id})}}" type="button" class="btn btn-light">Modifier</a></td>
                                 <td data-label="Supprimer"><a href="{{path('newsletter_delete', {id: newsletter.id})}}" type="button" class="btn btn-danger">Supprimer</a></td>
                                 <td data-label="Envoyer"><a href="{{path('newsletter_send', {id: newsletter.id })}}" type="button" class="btn btn-info">Envoyer</a></td>
                             </tr>
