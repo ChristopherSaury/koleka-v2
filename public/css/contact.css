@@ -139,7 +139,7 @@
     color: #222;
 }
 
-@media screen and (min-width: 280px) and (max-width: 575px) {
+@media screen and (max-width: 575px) {
     #contact{
         padding: 80px 0 0 0;
         margin-bottom: 4%;

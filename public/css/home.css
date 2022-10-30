@@ -126,11 +126,16 @@
 }
 
 /************************* RESPONSIVE ***************************/
-@media screen and (min-width: 280px) and (max-width: 575px){
+@media screen and (max-width: 575px){
     .medusa-intro,
     .werewolf-intro,
     .shadow-people-intro{
         width: calc(100% - 10px);
+    }
+    .medusa-intro h2,
+    .werewolf-intro h2,
+    .shadow-people-intro h2{
+        font-size: 40px;
     }
 }
 

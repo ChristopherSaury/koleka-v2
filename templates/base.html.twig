@@ -77,13 +77,15 @@
 
                     {% if app.user.userIdentifier is defined %}
                     <li onclick="toggleUserMobileNav(this)" class="user-toggle"><span>menu utilisateur<img id="user-arrow" style="width: 30px ; height: 30px; padding-left: 2px;" src="{{asset('img/arrow.svg')}}" alt="arrow"></span></li>
+                    {% if app.user.isVerified == true %}
                     {% if is_granted('ROLE_ADMIN') %}
                     <li class="user-mobile-link closed-user-mobile"><a href="{{path('newsletter_prepare')}}">Créer Newsletter</a></li>
                     <li class="user-mobile-link closed-user-mobile"><a href="{{path('newsletter_list')}}">Newsletter Liste</a></li>
                     {% endif %}
                     <li class="user-mobile-link closed-user-mobile"><a href="{{path('legende_creer')}}">Ajouter un article</a></li>
                     <li class="user-mobile-link closed-user-mobile"><a href="{{path('mes_articles', {id : app.user.getId})}}">Voir mes articles</a></li>
-                    <li class="user-mobile-link closed-user-mobile"><a href="#">Réglages</a></li>
+                    {% endif %}
+                    <li class="user-mobile-link closed-user-mobile"><a href="{{path('parameters')}}">Paramètres</a></li>
                     <li class="user-mobile-link closed-user-mobile"><a href="{{path('app_logout')}}">Déconnexion</a></li>
                     {% endif %}
                 </ul>

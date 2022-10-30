@@ -135,7 +135,7 @@
     justify-content: center;
 }
 
-@media screen and (min-width: 280px) and (max-width: 575px){
+@media screen and (max-width: 575px){
     #about .koleka-intro{
         flex-direction: column;
         padding: 4%;

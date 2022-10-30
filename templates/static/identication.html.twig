@@ -6,7 +6,7 @@
     <style>
         #confirm{
             width: 100%;
-            height: 100vh;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -22,6 +22,14 @@
         #confirm .container .col-lg-md p{
             font-size: 34px;
             font-weight: bold;
+        }
+        @media screen and (max-width: 700px){
+            #confirm{
+                min-height: 140vh;
+            }
+            #confirm .container .col-lg-md p{
+                text-align: center;
+            }
         }
     </style>
 {% endblock %}
