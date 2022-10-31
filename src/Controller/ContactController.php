@@ -35,7 +35,7 @@ class ContactController extends AbstractController{
                  'text/plain');
 
                 $recaptcha = $_POST['g-recaptcha-response'];
-                $secret_key = $_ENV['GOOGLE_RECAPTCHA_SECRET_KEY'];
+                $secret_key = $_ENV['GOOGLE_RECAPTCHA_SECRET'];
 
                 $url = 'https://www.google.com/recaptcha/api/siteverify?secret='. $secret_key . '&response=' . $recaptcha;
                 $response = file_get_contents($url);
