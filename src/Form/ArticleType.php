@@ -28,21 +28,6 @@ class ArticleType extends AbstractType
                 'choice_label' => 'name',
                 'label' => 'Pays d\'origine :'
                 ])
-            ->add('illustration', FileType::class,[
-                'label' => 'Image d\'illustration (facultatif) :',
-                'multiple' => false,
-                'mapped' => false,
-                'required' => false,
-                'constraints' => [
-                    new File([
-                        'mimeTypes' => [
-                            'image/jpeg',
-                            'image/png',
-                    ],
-                        'mimeTypesMessage' => 'format image autorisé : jpg, jpeg , png',
-                    ])
-                ]
-            ])
             ->add('content', TextareaType::class,[
                 'label' => 'Contenu :',
                 'attr' => ['placeholder' => 'Contenu de la légende']

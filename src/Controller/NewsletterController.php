@@ -107,6 +107,7 @@ class NewsletterController extends AbstractController{
     public function newsletterSend($id, NewsletterDocumentRepository $nslRepo, NewsletterRepository $sub, MailerInterface $mailer, EntityManagerInterface $em){
         $nsl_to_send = $nslRepo->find($id);
         $subscribers = $sub->findAll();
+        $unsublink = 'https://asso-koleka.fr/abonnement/supprimer/';
 
         foreach ($subscribers as $subscriber){
             if($subscriber){
@@ -115,7 +116,7 @@ class NewsletterController extends AbstractController{
                 ->to($subscriber->getSubscriptionEmail())
                 ->subject('Newsletter Koleka : ' . $nsl_to_send->getDate()->format('m-Y'))
                 ->htmlTemplate('form/nsl-doc.html.twig')
-                ->context(compact('nsl_to_send', 'subscriber'));
+                ->context(compact('nsl_to_send', 'subscriber', 'unsublink'));
 
                 if($nsl_to_send->getAttachment()){
                    $email->attachFromPath($this->getParameter('koleka_newsletter') . '/' . $nsl_to_send->getAttachment());

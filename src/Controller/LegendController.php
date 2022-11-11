@@ -46,7 +46,7 @@ class LegendController extends AbstractController{
     
     #[Route("legende/ajouter", name:"legende_creer")]
     #[IsGranted('ROLE_USER')]
-    public function insertLegend(EntityManagerInterface $em, Request $request , SluggerInterface $slugger){
+    public function insertLegend(EntityManagerInterface $em, Request $request){
         $new_article = new Article;
         $new_article->setAuthor($this->getUser());
         $new_article->setPublishedAt(new DateTime());
@@ -54,25 +54,6 @@ class LegendController extends AbstractController{
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-           
-            $img_file = $form->get('illustration')->getData();
-
-            if($img_file){
-                $originFileName = pathinfo($img_file->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originFileName);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $img_file->guessExtension();
-
-                try{
-                    $img_file->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e){
-                    dd($e);
-                }
-                $new_article->setIllustration($newFilename);
-            }
-
             $em->persist($new_article);
             $em->flush();
              

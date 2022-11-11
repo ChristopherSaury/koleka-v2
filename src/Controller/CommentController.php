@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class CommentController extends AbstractController{
     #[Route('/commentaire/article/{id}', name:'article_com', methods:'GET')]
-    public function getAllArticleComment($id, CommentRepository $comment, SerializerInterface $serializer){
+    public function getAllArticleComment($id, CommentRepository $comment){
         $comment_article = $comment->getArticleComment($id);
 
         return $this->render('legend/comment.html.twig', [

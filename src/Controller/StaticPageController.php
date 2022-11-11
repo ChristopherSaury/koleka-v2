@@ -29,4 +29,9 @@ class StaticPageController extends AbstractController{
     public function identication(){
         return $this->render('static/identication.html.twig');
     }
+
+    #[Route('/desabonnement/reussi', name:'unsub_success')]
+    public function unsubSuccess(){
+        return $this->render('form/nsl-unsubscribe.html.twig');
+    }
 }

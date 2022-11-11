@@ -15,16 +15,6 @@
             <p class="article-author">{{ legend.author.getFirstname() }} {{ legend.author.getLastname() }}</p>
             <p>publié le: {{ legend.getPublishedAt()|date("d-m-Y H:i") }}</p>
         </div>
-        {% if legend.illustration is not null %}
-        <figure class="article-img-container">
-            <img class="article-img" src="{{ asset('uploads/') }}{{legend.illustration}}" alt="illustration légende {{ legend.title }}">
-            <figcaption>
-                Image d'illustration de la légende {{ legend.title }}
-            </figcaption>
-        </figure>
-        {% elseif legend.illustration is null %}
-            
-        {% endif %}
         <div class="article-body">
             <p>
                {{ legend.content }}

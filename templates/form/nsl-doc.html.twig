@@ -1,8 +1,6 @@
 <h1>{{ nsl_to_send.title }}</h1>
 <p>date : {{ nsl_to_send.getDate()|date('m-Y') }}</p>
 
-
-
 <p>{{ nsl_to_send.content }}</p>
 
-<a href="#">Se désinscrire</a>
+<a href="{{ unsublink }}{{ subscriber.getId() }}">Se désinscrire</a>

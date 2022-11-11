@@ -45,6 +45,6 @@ class NslSubController extends AbstractController{
         $em->remove($sub);
         $em->flush();
 
-        return new Response('desinscription avec succès', 200);
+        return $this->redirectToRoute('unsub_success');
     }
 }

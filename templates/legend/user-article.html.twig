@@ -44,7 +44,6 @@
                         <tr>
                             <th>Titre</th>
                             <th>Date</th>
-                            <th>illustration</th>
                             <th>Consulter</th>
                             <th>Modifier</th>
                             <th>Supprimer</th>
@@ -55,11 +54,6 @@
                         <tr>
                             <td data-label="Titre">{{ legend.title }}</td>
                             <td data-label="Date">{{ legend.getPublishedAt()|date('d/m/Y') }}</td>
-                            {% if legend.illustration is null %}
-                            <td data-label="Image">aucune</td>
-                            {% else %}
-                            <td data-label="Image">{{ legend.illustration }}</td>
-                            {% endif %}
                             <td data-label="Consulter"><a href="{{path('article', {id: legend.id})}}" class="btn btn-primary">Voir</a></td>
                             <td data-label="Modifier"><a href="{{path('modifier_article', {id: legend.id})}}" class="btn btn-info">Modifier</a></td>
                             <td data-label="Supprimer"><a href="{{path('supprimer_article', {id: legend.id})}}" class="btn btn-danger">Supprimer</a></td>

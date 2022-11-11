@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Désabonnement{% endblock %}
+
+{% block style %}
+    <style>
+        #unsub{
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        #unsub .container .col-lg-md{
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        #unsub .container .col-lg-md p{
+            font-size: 34px;
+            font-weight: bold;
+        }
+        @media screen and (max-width: 700px){
+            #unsub{
+                min-height: 140vh;
+            }
+            #unsub .container .col-lg-md p{
+                text-align: center;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <section id="unsub">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-md">
+                    <p>
+                       Désabonnement newsletter réussi
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
