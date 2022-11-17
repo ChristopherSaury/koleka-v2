@@ -10,7 +10,6 @@ use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -88,31 +87,10 @@ class LegendController extends AbstractController{
 
     #[Route("/legende/modifier/article/{id}", name:"modifier_article")]
     #[IsGranted("ROLE_USER")]
-    public function updateArticle(Request $request, Article $article, EntityManagerInterface $em, SluggerInterface $slugger){
+    public function updateArticle(Request $request, Article $article, EntityManagerInterface $em){
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);
-        if($form->isSubmitted() && $form->isValid()){
-
-            $img_file = $form->get('illustration')->getData();
-
-            if($img_file){
-                $originFileName = pathinfo($img_file->getClientOriginalName(), PATHINFO_FILENAME);
-                $safeFilename = $slugger->slug($originFileName);
-                $newFilename = $safeFilename . '-' . uniqid() . '.' . $img_file->guessExtension();
-
-                try{
-                    $img_file->move(
-                        $this->getParameter('images_directory'),
-                        $newFilename
-                    );
-                } catch (FileException $e){
-                    return $this->redirectToRoute('error_500');
-                }
-                $previous_image = basename($article->getIllustration());
-                unlink($this->getParameter('kernel.project_dir') . '/public/uploads/' . $previous_image);
-
-                $article->setIllustration($newFilename);
-            }            
+        if($form->isSubmitted() && $form->isValid()){           
 
             $em->persist($article);
             $em->flush();

@@ -7,7 +7,11 @@
             <div class="userComment"><p>{{ comment.content }}</p></div>
             <div class="com-action">
                 <div class="reply-action">
+                    {% if app.user.userIdentifier is defined %}
                     <a onclick="openReplyModal(this)" data-reply data-id="{{ comment.id }}" title="répondre">Répondre</a>
+                    {% elseif app.user.userIdentifier is not defined %}
+                    <a href="{{path('app_login')}}" data-reply title="répondre">Répondre</a>
+                    {% endif %}
                 </div>
                 <div class="com-user-action">
                     {% if app.user.userIdentifier is defined and app.user.userIdentifier == comment.author.email %}

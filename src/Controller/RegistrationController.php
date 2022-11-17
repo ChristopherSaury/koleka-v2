@@ -3,11 +3,14 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Form\NewPasswordType;
+use App\Form\UpdateUserFormType;
 use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use App\Security\LoginAuthenticator;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -118,5 +121,56 @@ class RegistrationController extends AbstractController
         $this->addFlash('success', 'Your email address has been verified.');
 
         return $this->redirectToRoute('accueil');
+    }
+
+    #[Route('/utilisateur/modifier/informations/{id}', name:'update_user')]
+    #[IsGranted('ROLE_USER')]
+    public function updateUser($id ,Request $request, User $user, EntityManagerInterface $em){
+        if($this->getUser()->getId() != $id){
+            return $this->redirectToRoute('error_403');
+        } 
+            $form = $this->createForm(UpdateUserFormType::class, $user);
+            $form->handleRequest($request);
+    
+            if($form->isSubmitted() && $form->isValid()){
+                
+                $em->persist($user);
+                $em->flush();
+                $this->addFlash('success', 'Données modifiées avec succès');
+                return $this->redirect($this->generateUrl('update_user',[ 'id' => $this->getUser()->getId()]));
+                
+            }
+    
+            return $this->render('parameters/updateUser.html.twig',[
+                'updateUserForm' => $form->createView()
+            ]);
+    }
+
+    #[Route('/utilisateur/modifier/identifiant/{id}', name:'update_psw')]
+    #[IsGranted('ROLE_USER')]
+    public function updatePsw($id ,Request $request, User $user,UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $em){
+        if($this->getUser()->getId() != $id){
+            return $this->redirectToRoute('error_403');
+        }
+        $form = $this->createForm(NewPasswordType::class, $user);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid()){
+            $new_password = $form->get('plainPassword')->getData();
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $new_password
+                    ));
+            $em->persist($user);
+            $em->flush();
+
+            $this->addFlash('success', 'Mot de passe modifié avec succès');
+            return $this->redirect($this->generateUrl('update_psw',['id' => $this->getUser()->getId()]));
+        }
+
+        return $this->render('parameters/updatePsw.html.twig', [
+            'updatePswForm' => $form->createView()
+        ]);
     }
 }

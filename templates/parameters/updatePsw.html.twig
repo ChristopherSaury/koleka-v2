@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Association culturelle Koleka - Modifier mot de passe{% endblock %}
+
+{% block style %}
+    <style>
+        #updatePsw{
+            width: 100%;
+            min-height: 100vh;
+        }
+        #updatePsw .container{
+            width: 100%;
+            height: 100%;
+            margin-top: 110px;
+            display: grid;
+            justify-content: center;
+        }
+        #updatePsw .container form{
+            margin-top: 4%;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+<section id="updatePsw">
+    <div class="container">
+        <h1 class="text-center mt-4">Modifier mot de passe</h1>
+        <div class="row">
+            <div class="form-container">
+            {% for success in app.flashes('success') %}
+                <div class="alert alert-success">{{ success }}</div>
+            {% endfor %}
+                {{ form(updatePswForm) }}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

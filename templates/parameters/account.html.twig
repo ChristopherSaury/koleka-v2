@@ -68,6 +68,8 @@
                 <div class="col-lg-md">
                     <h1 class="text-center">Gestion du compte</h1>
                     <ul class="param-list mt-4">
+                        <li><a href="{{path('update_user', {id: app.user.id })}}">Modifier mes données</a></li>
+                        <li><a href="{{path('update_psw', {id: app.user.id })}}">Modifier mot de passe</a></li>
                         <li><a onclick="showDeleteModal()" id="delete-account">Suppression du compte</a></li>
                     </ul>
                 </div>
