@@ -3,6 +3,7 @@
     <form action="#" method="post" id="cmt-reply">
         <textarea class="form-control data_reply" name="reply-input" id="reply-input" cols="30" rows="4" placeholder="Répondre à un commentaire"></textarea>
         <input class="data_reply" type="hidden" id="comment_parentid" name="comment_parentid">
+        <input type="hidden" class="data_reply"  name="token-reply" value="{{ csrf_token('com-reply-token') }}"/>
         <div class="col-lg-md-12">
             <button type="submit" id="submit-reply" class="btn btn-comment" onclick="saveReply(); return false;">Ajouter une réponse</button>
         </div>

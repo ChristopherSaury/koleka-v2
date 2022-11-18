@@ -26,26 +26,22 @@
             <div class="row">
                 <div class="col-lg-md-12 form-container">
                     <div class="alert alert-success" id="message">commentaire ajouté</div>
-                    <form id="cmt-form">
-                        <textarea class="form-control form_data" name="comment-input" id="comment-input" cols="30" rows="4" placeholder="Ajouter un commentaire"></textarea>
-                        <div class="col-lg-md-12">
-                            {% if app.user.userIdentifier is defined %}
-                            <button type="submit" id="submit" class="btn btn-comment" onclick="save_data(); return false;">Ajouter un commentaire</button>
-                            {% elseif app.user.userIdentifier is not defined %}
-                            <a class="btn btn-login" href="{{path('app_login')}}">Ajouter un commentaire</a>
-                            {% endif %}
-                        </div>
-                    </form>
-                    <!-- <div class="comment-display-container">
-
-                    </div> -->
+                    <div class="alert alert-danger" id="message-err-com">erreur ajout commentaire</div>
+                    {{ render_hinclude(controller('App\\Controller\\CommentController::displayCommentForm'),  {
+                        default: 'legend-form/comment-form.html.twig'
+                    }) }}
+                    
                     {% include  './legend/comment.html.twig' %}
                 </div>
             </div>
         </div>
 
-        {% include  './legend/modal.html.twig' %}
-        {% include  './legend/modal-update.html.twig' %}
+        {{ render_hinclude(controller('App\\Controller\\CommentController::displayReplyForm'),  {
+            default: './legend-form/modal.html.twig'
+        }) }}
+        {{ render_hinclude(controller('App\\Controller\\CommentController::displayUpdateForm'),  {
+            default: './legend-form/modal-update.html.twig'
+        }) }}
     </article>
 </section>
 {% endblock %}

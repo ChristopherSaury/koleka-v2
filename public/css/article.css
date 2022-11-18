@@ -54,6 +54,9 @@
 #mythPage #message{
     display: none;
 }
+#mythPage #message-err-com{
+    display: none;
+}
 #mythPage .comment-section {
     width: 100%;
     height: auto;

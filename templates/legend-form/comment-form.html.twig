@@ -1,0 +1,11 @@
+<form id="cmt-form">
+    <textarea class="form-control form_data" name="comment-input" id="comment-input" cols="30" rows="4" placeholder="Ajouter un commentaire"></textarea>
+    <input class="form_data" type="hidden" name="token" value="{{ csrf_token('com-token') }}"/>
+    <div class="col-lg-md-12">
+        {% if app.user.userIdentifier is defined %}
+        <button type="submit" id="submit" class="btn btn-comment" onclick="save_data(); return false;">Ajouter un commentaire</button>
+        {% elseif app.user.userIdentifier is not defined %}
+        <a class="btn btn-login" href="{{path('app_login')}}">Ajouter un commentaire</a>
+        {% endif %}
+    </div>
+</form>

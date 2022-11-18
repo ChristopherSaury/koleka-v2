@@ -12,6 +12,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 
 class CommentController extends AbstractController{
     #[Route('/commentaire/article/{id}', name:'article_com', methods:'GET')]
@@ -22,10 +23,17 @@ class CommentController extends AbstractController{
             'comments' => $comment_article 
         ]);
     }
+
+    #[Route('/commentaire/formulaire', name:'com_form')]
+    public function displayCommentForm(){
+        return $this->render('legend-form/comment-form.html.twig');
+    }
+
     #[Route('/commentaire/ajouter/{id}', name:'ajouter_com')]
     #[IsGranted('ROLE_USER')]
-    public function addComment($id, EntityManagerInterface $em, ArticleRepository $article){
-        if(!empty($_POST['comment-input'])){
+    public function addComment($id, Request $request , EntityManagerInterface $em, ArticleRepository $article){
+        $submittedToken = $request->request->get('token');
+        if(!empty($_POST['comment-input']) && $this->isCsrfTokenValid('com-token', $submittedToken)){
             
             $new_comment = new Comment;
             
@@ -44,10 +52,16 @@ class CommentController extends AbstractController{
         }
     }
     
+    #[Route('/commentaire/formulaire/reponse', name:'com_form_reply')]
+    public function displayReplyForm(){
+        return $this->render('legend-form/modal.html.twig');
+    }
+
     #[Route('/commentaire/ajouter/reply/{id}', name:'ajouter_com_reply')]
     #[IsGranted('ROLE_USER')]
-    public function addReplyComment($id, EntityManagerInterface $em, CommentRepository $comment, ArticleRepository $article){
-        if(!empty($_POST['reply-input']) && $_POST['comment_parentid']){
+    public function addReplyComment($id, Request $request , EntityManagerInterface $em, CommentRepository $comment, ArticleRepository $article){
+        $submittedToken = $request->request->get('token-reply');
+        if(!empty($_POST['reply-input']) && $_POST['comment_parentid'] && $this->isCsrfTokenValid('com-reply-token', $submittedToken)){
             $new_comment = new Comment;
             
             $new_comment->setParent($comment->find($_POST['comment_parentid']));
@@ -66,6 +80,11 @@ class CommentController extends AbstractController{
         }
     }
 
+    #[Route('/commentaire/formulaire/modifier', name:'modif_form')]
+    public function displayUpdateForm(){
+        return $this->render('legend-form/modal-update.html.twig');
+    }
+
     #[Route('/commentaire/modifier/{id}', name:'modifier_commentaire', methods:'GET')]
     #[IsGranted('ROLE_USER')]
     public function updateComment($id , CommentRepository $comment, SerializerInterface $serializer){
@@ -79,8 +98,9 @@ class CommentController extends AbstractController{
 
     #[Route('/commentaire/modifier/handler/{id}', name:'modifier_com_handler')]
     #[IsGranted('ROLE_USER')]
-    public function updateCommentHandler(EntityManagerInterface $em, Comment $comment){
-        if(!empty($_POST['update-input'])){
+    public function updateCommentHandler(Request $request, EntityManagerInterface $em, Comment $comment){
+        $submittedToken = $request->request->get('token-update');
+        if(!empty($_POST['update-input']) && $this->isCsrfTokenValid('com-update-token', $submittedToken)){
             $comment->setContent(htmlspecialchars($_POST['update-input']));
             $em->persist($comment);
             $em->flush();

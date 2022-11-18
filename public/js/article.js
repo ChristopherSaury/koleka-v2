@@ -96,6 +96,14 @@ function save_data(){
             setTimeout(function(){
                 document.getElementById('message').style.display = 'none';
             }, 2000)
+        }else if(xhttp.status == 500){
+            document.querySelector('#mythPage #cmt-form #submit').disabled = false;
+            document.querySelector('#mythPage #cmt-form').reset();
+            document.getElementById('message-err-com').style.display = 'initial';
+
+            setTimeout(function(){
+                document.getElementById('message-err-com').style.display = 'none';
+            }, 2000)
         }
     }
 }

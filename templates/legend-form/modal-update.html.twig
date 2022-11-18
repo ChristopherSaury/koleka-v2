@@ -3,6 +3,7 @@
     <form action="#" method="post" id="upd-form">
         <textarea class="form-control data_update" name="update-input" id="update-input" cols="30" rows="4" placeholder="Répondre à un commentaire"></textarea>
         <input type="hidden" id="comment_id" name="com_id" class="data_update">
+        <input type="hidden" class="data_update"  name="token-update" value="{{ csrf_token('com-update-token') }}"/>
         <div class="col-lg-md-12">
             <button type="submit" id="submit-update" class="btn btn-comment" onclick="saveUpdatedComment(); return false;">Ajouter une réponse</button>
         </div>
