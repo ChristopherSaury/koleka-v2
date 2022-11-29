@@ -33,7 +33,7 @@ class NslSubController extends AbstractController{
             ->htmlTemplate('form/nsl-confirm.html.twig');
             $mailer->send($email);
 
-            $this->addFlash('success', 'Demande d\'abonnement envoyée');
+            $this->addFlash('Subsuccess', 'Demande d\'abonnement envoyée');
             return $this->redirectToRoute('sub');
         }
         return $this->render('form/newsletter-sub.html.twig',[

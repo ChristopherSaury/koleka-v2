@@ -72,11 +72,20 @@
                 </div>
                 <i class="fas fa-bars" onclick="toggleMobileMenu(this)"></i>
                 <ul class="mobile-list closed-menu">
+                    {% if app.user.userIdentifier is not defined %}
                     <li><a href="{{path('accueil')}}" class="mobile-link">Accueil</a></li>
                     <li><a href="{{path('legende')}}" class="mobile-link">Legende</a></li>
                     <li><a href="{{path('a-propos')}}" class="mobile-link">A propos</a></li>
-                    <li><a href="{{path('app_register')}}" class="mobile-link">inscription</a></li>
+                    <li><a href="{{path('app_login')}}" class="mobile-link">Connexion</a></li>
                     <li><a href="{{path('contact')}}" class="mobile-link">Contact</a></li>
+                    {% elseif app.user.userIdentifier is defined  %}
+                    <li onclick="toggleStandardMobile(this)" class="standard-user-toggle"><span>menu<img id="standard-user-arrow" style="width: 30px ; height: 30px; padding-left: 2px;" src="{{asset('img/arrow.svg')}}" alt="arrow"></span></li>
+                    <li class="standard-mobile-link closed-std-user-mobile"><a href="{{path('accueil')}}">Accueil</a></li>
+                    <li class="standard-mobile-link closed-std-user-mobile"><a href="{{path('legende')}}">Legende</a></li>
+                    <li class="standard-mobile-link closed-std-user-mobile"><a href="{{path('a-propos')}}">A propos</a></li>
+                    <li class="standard-mobile-link closed-std-user-mobile"><a href="{{path('app_login')}}">Connexion</a></li>
+                    <li class="standard-mobile-link closed-std-user-mobile"><a href="{{path('contact')}}">Contact</a></li>
+                    {% endif %}
 
                     {% if app.user.userIdentifier is defined %}
                     <li onclick="toggleUserMobileNav(this)" class="user-toggle"><span>menu utilisateur<img id="user-arrow" style="width: 30px ; height: 30px; padding-left: 2px;" src="{{asset('img/arrow.svg')}}" alt="arrow"></span></li>

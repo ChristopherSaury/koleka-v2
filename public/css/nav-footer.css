@@ -181,6 +181,14 @@ html{
 #mobile-nav .mobile-list .closed-user-mobile{
     display: none;
 }
+#mobile-nav .mobile-list .standard-mobile-link a{
+    text-decoration: none;
+    color: #1a2020;
+    font-family: 'Mate SC', serif;
+}
+#mobile-nav .mobile-list .closed-std-user-mobile{
+    display: none;
+}
 .closed-menu{
     transform: translateX(-100%);
 }

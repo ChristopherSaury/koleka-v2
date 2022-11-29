@@ -27,8 +27,8 @@
         <h1 class="text-center mt-4">Modifier mes informations</h1>
         <div class="row">
             <div class="form-container">
-            {% for success in app.flashes('success') %}
-                <div class="alert alert-success">{{ success }}</div>
+            {% for updUserSuccess in app.flashes('updUserSuccess') %}
+                <div class="alert alert-success">{{ updUserSuccess }}</div>
             {% endfor %}
                 {{ form(updateUserForm) }}
             </div>

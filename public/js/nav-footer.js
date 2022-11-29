@@ -13,6 +13,25 @@ const toggleMobileMenu = (element) => {
         element.nextElementSibling.classList.add("open");
     }
 }
+// STANDARD MOBILE NAVBAR
+let standardUserNav = document.querySelector('#mobile-nav .standard-user-toggle');
+let arrowStandardNav = document.querySelector('#mobile-nav .mobile-list #standard-user-arrow');
+let userStandardMobileLink = document.querySelectorAll('#mobile-nav .mobile-list .standard-mobile-link');
+
+const toggleStandardMobile = (element) =>{
+    if(element.nextElementSibling.classList.contains('closed-std-user-mobile')){
+        arrowStandardNav.style.transform = "rotate(180deg)";
+        userStandardMobileLink.forEach(element =>{
+            element.classList.remove('closed-std-user-mobile');
+        })
+    }else if(!element.nextElementSibling.classList.contains('closed-std-user-mobile')){
+        arrowStandardNav.style.transform = "rotate(0deg)";
+        userStandardMobileLink.forEach(element =>{
+        element.classList.add('closed-std-user-mobile');
+        })
+    }
+}
+
 // USER NAVBAR MOBILE
 let userNavMobileBtn = document.querySelector('#mobile-nav .user-toggle');
 let arrowUserMobile = document.querySelector('#mobile-nav .mobile-list #user-arrow')

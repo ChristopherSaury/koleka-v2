@@ -53,11 +53,11 @@
         </div>
         <form method="POST" action="{{path('envoyer_msg')}}" id="koleka-contact" class="info-ct">
             <h2>Contactez-nous</h2>
-            {% for error in app.flashes('error') %}
-                <div class="alert alert-danger">{{ error }}</div>
+            {% for errorContact in app.flashes('errorContact') %}
+                <div class="alert alert-danger">{{ errorContact }}</div>
             {% endfor %}
-            {% for success in app.flashes('success') %}
-                <div class="alert alert-success">{{ success }}</div>
+            {% for successContact in app.flashes('successContact') %}
+                <div class="alert alert-success">{{ successContact }}</div>
             {% endfor %}
             <div class="line">
                 <div class="lastname">

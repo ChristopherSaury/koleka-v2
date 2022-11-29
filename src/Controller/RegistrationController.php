@@ -136,7 +136,7 @@ class RegistrationController extends AbstractController
                 
                 $em->persist($user);
                 $em->flush();
-                $this->addFlash('success', 'Données modifiées avec succès');
+                $this->addFlash('updUserSuccess', 'Données modifiées avec succès');
                 return $this->redirect($this->generateUrl('update_user',[ 'id' => $this->getUser()->getId()]));
                 
             }
@@ -165,7 +165,7 @@ class RegistrationController extends AbstractController
             $em->persist($user);
             $em->flush();
 
-            $this->addFlash('success', 'Mot de passe modifié avec succès');
+            $this->addFlash('updPswSuccess', 'Mot de passe modifié avec succès');
             return $this->redirect($this->generateUrl('update_psw',['id' => $this->getUser()->getId()]));
         }
 

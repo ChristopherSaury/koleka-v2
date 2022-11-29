@@ -47,16 +47,13 @@ class NewsletterController extends AbstractController{
                         $this->getParameter('koleka_newsletter'),
                         $newFilename
                     );
-                } catch (FileException $e){
-                    dd($e);
+                } catch (FileException){
+                    $this->redirectToRoute('error_500');
                 }
                 $new_nsl->setAttachment($newFilename);
             }
-
-
             $em->persist($new_nsl);
             $em->flush();
-
             return $this->redirectToRoute('newsletter_list');
         }
 
