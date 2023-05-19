@@ -1,42 +1,120 @@
 @import url('https://fonts.googleapis.com/css2?family=Cinzel&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Konkhmer+Sleokchher&display=swap');
 #country-legends{
-    padding-top: 80px;
+    padding: 80px 0 8% 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row-reverse;
+}
+#country-legends .legend-list-ct{
+    width: 70%;
+    height: auto;
+    padding: 8% 4% 0 4%;
+}
+#country-legends .legend-list-ct .country-login{
     width: 100%;
     height: auto;
 }
-#country-legends .country-title{
-    text-align: center;
-    margin-top: 5%;
-    font-size: 30px;
+#country-legends .legend-list-ct .country-login p{
+    margin-bottom: 0;
+    font-size: 22px;
+}
+#country-legends .legend-list-ct .country-login p a{
+    margin-left: 8px;
+}
+#country-legends .legend-list-ct .country-title{
+    font-size: 32px;
     font-family: 'Cinzel', serif;
+    margin-bottom: 6%;
 }
-#country-legends .country-content{
-    padding: 0 0 0 10%;
+/* COUNTRY CARDS*/
+#country-legends .country-intro{
+    width: 30%;
+    height: auto;
+    padding-top: 8%;
 }
-#country-legends .country-content .country-sub-title{
-    font-family: 'Cinzel', serif;
+#country-legends .country-intro .country-card{
+    width: 300px;
+    min-height: 500px;
+    background-color: rgb(243, 242, 242);
+    border: 1px solid #a3a2a2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
-#country-legends .country-content a{
-    text-decoration: none;
-    font-size: 17px;
+#country-legends .country-card .name-ct{
+    width: calc(100% - 10px);
+    margin-top: 5px;
+    min-height: 50px;
+    background-color: #E6D18E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-#country-legends .country-content a:hover{
-    text-decoration: underline;
+#country-legends .country-card .name-ct h1{
+    font-size: 25px;
+    font-family: 'Konkhmer Sleokchher', cursive;
+    margin: 0;
 }
-#country-legends .country-content ul{
-    padding: 2% 0 0 4%;
+#country-legends .country-card .country-flag{
+    width: calc(100% - 30px);
+    height: 150px;
+    margin-top: 20px;
+    border: 1px solid #878787;
 }
-#country-legends .country-sub-title{
-    padding-top: 5%;
-    font-size: 30px;
-    position: relative;
+#country-legends .country-card .langage,
+#country-legends .country-card .fondation-date{
+    width: calc(100% - 10px);
+    margin-top: 20px;
+    min-height: 25px;
+    background-color: #E6D18E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-#country-legends .country-sub-title::after{
-    content: '';
-    width: 88%;
-    position: absolute;
-    left: 0;
-    bottom: 1px;
-    border-width: 0 0 1px;
-    border-style: solid;
+#country-legends .country-card .langage h2,
+#country-legends .country-card .fondation-date h2{
+    font-size: 14px;
+    font-family: 'Konkhmer Sleokchher', cursive;
+    margin: 0;
+}
+#country-legends .country-card .language-list,
+#country-legends .country-card .date-section{
+    width: calc(100% - 10px);
+    height: auto;
+    padding-top: 10px;
+}
+@media screen and (max-width: 1020px){
+    #country-legends .legend-list-ct{
+        width: 60%;
+    }
+    #country-legends .country-intro{
+        width: 40%;
+    }
+}
+@media screen and (max-width: 800px){
+    #country-legends{
+        flex-direction: column;
+    }
+    #country-legends .legend-list-ct{
+        width: 100%;
+    }
+    #country-legends .country-intro{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    #country-legends .legend-list-ct .country-title{
+        text-align: center;
+    }
+    #country-legends .legend-list-ct .country-login p{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 310px){
+    #country-legends .country-intro .country-card{
+        width: calc(100% - 20px);
+    }
 }

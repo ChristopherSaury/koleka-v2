@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Article;
 use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
+use App\Repository\CountryLanguagesRepository;
 use App\Repository\CountryRepository;
 use DateTime;
 use Doctrine\ORM\EntityManagerInterface;
@@ -31,7 +32,7 @@ class LegendController extends AbstractController{
     }
 
     #[Route("/legende/pays/{id}", name:"un_pays")]
-    public function displayCountryPage($id, CountryRepository $country, ArticleRepository $article){
+    public function displayCountryPage($id, CountryRepository $country, ArticleRepository $article, CountryLanguagesRepository $languages){
         $one_country = $country->find($id);
         if(!$one_country){
             return $this->redirectToRoute('error_404');
@@ -39,7 +40,8 @@ class LegendController extends AbstractController{
         return $this->render('legend/country.html.twig',[
             'controller_name'=> 'LegendController',
             'country' => $one_country,
-            'article' => $article->getCountryArticle($id)
+            'article' => $article->getCountryArticle($id),
+            'languages' => $languages->getLanguageByCountry($id)
         ]);
     }
     

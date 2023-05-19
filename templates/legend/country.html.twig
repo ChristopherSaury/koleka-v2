@@ -3,45 +3,55 @@
 {% block title %}Association culturelle Koleka - Mythes et légendes {{ country.name }}{% endblock %}
 {% block stylesheets %} <link rel="stylesheet" href="{{asset('css/country.css')}}"> {% endblock %}
 
-{% block style %}
-    <style>
-        #country-legends .country-banner{
-            width: 100%;
-            height: 500px;
-            background: url("{{asset('img/country/')}}{{country.flag}}")
-            center center;
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            box-shadow: 1px 5px 5px #222;
-        }
-    </style>
-{% endblock %}
-
 {% block body %}
 <section id="country-legends">
-    <div class="country-banner"></div>
-    <h2 class="country-title">{{ country.name }}</h2>
-        <div class="country-content">
-            <h1 class="country-sub-title">Mythes et légendes {{ country.name }}</h1>
-            <ul>
+    <div class="country-intro">
+        <div class="country-card">
+            <div class="name-ct">
+                <h1>{{ country.name }}</h1>
+            </div>
+            <img class="country-flag" src="{{asset('img/country/')}}{{country.flag}}" alt="drapeau {{ country.name }}">
+            <div class="fondation-date">
+                <h2>Date de fondation</h2>
+            </div>
+            <div class="date-section">
+                <p style="padding-left: 4%;">Création : {{ country.getFondationDate() }} -</p>
+            </div>
+            <div class="langage">
+                <h2>Langues officielles</h2>
+            </div>
+            <div class="language-list">
+                <ul>
+                    {% if languages is not empty %}
+                    {% for key, value in languages %}
+                        <li>{{ value['name'] }}</li>
+                    {% endfor %}
 
-                {% for legend in article %}
-                <li><a href="{{path('article', {id: legend.id})}}">{{ legend.title }}</a></li>
-                {% endfor %}
-            </ul>
+                    {% else %}
+                        <li style="list-style-type: none;">ancune</li>
+                    {% endif %}
+                    
+                </ul>
+            </div>
         </div>
-</section>
-{% endblock %}
+    </div>
+    <div class="legend-list-ct">
+        <h1 class="country-title">Mythes et légendes {{ country.name }}</h1>
 
-{% block js %} 
-    <script>
-        let userNavPage = document.querySelector("#desktop .user-nav");
-        let countryPage = document.querySelector("#country-legends");
-        
-        if(userNavPage && screen.width < 768){
-            countryPage.style.paddingTop = '110px';
-        }else{
-            countryPage.style.paddingTop = '80px';
-        }
-    </script> 
+        {% if article is not empty %}
+        <ul>
+            {% for legend in article %}
+            <li><a href="{{path('article', {id: legend.id})}}">{{ legend.title }}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+
+        <div class="country-login">
+            <p>Vous êtes originaire du pays ? Ou vous êtes un passionné ?</p>
+            <p>Venez partager vos connaissances <a href="{{path('app_login')}}">Connectez-vous</a></p>
+        </div>
+
+        {% endif %}
+    </div>
+</section>
 {% endblock %}
