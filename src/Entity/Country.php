@@ -13,6 +13,7 @@ class Country
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[ORM\OneToMany(targetEntity: CountryLanguages::class, mappedBy:'country_id')]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
@@ -27,6 +28,9 @@ class Country
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $flag = null;
+
+    #[ORM\Column(length: 20, nullable: true)]
+    private ?string $fondation_date = null;
 
     public function __construct()
     {
@@ -100,6 +104,18 @@ class Country
     public function setFlag(?string $flag): self
     {
         $this->flag = $flag;
+
+        return $this;
+    }
+
+    public function getFondationDate(): ?string
+    {
+        return $this->fondation_date;
+    }
+
+    public function setFondationDate(?string $fondation_date): self
+    {
+        $this->fondation_date = $fondation_date;
 
         return $this;
     }
